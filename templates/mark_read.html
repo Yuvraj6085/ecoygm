@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications | EcoYugam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-6">
+
+  <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-3xl">
+    <h1 class="text-3xl font-bold text-emerald-700 mb-6 text-center">Notifications</h1>
+
+    {% if notifications %}
+      <ul class="space-y-4">
+        {% for n in notifications %}
+          <li class="flex justify-between items-center p-4 border rounded-lg 
+                     {% if n.read %}bg-slate-50{% else %}bg-emerald-50{% endif %}">
+            <div>
+              <p class="text-slate-800 font-medium">{{ n.message }}</p>
+              <p class="text-sm text-slate-500">Notification ID: {{ n.id }}</p>
+            </div>
+            
+            {% if not n.read %}
+              <a href="{{ url_for('mark_read', id=n.id) }}"
+                 class="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition">
+                Mark as Read
+              </a>
+            {% else %}
+              <span class="text-emerald-600 font-semibold">✓ Read</span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-center text-slate-500 text-lg">No notifications found.</p>
+    {% endif %}
+
+    <div class="mt-6 text-center">
+    <a href="{{ url_for('dashboard') }}" class="text-emerald-600 hover:underline">← Back to Home</a>
+
+    </div>
+  </div>
+
+</body>
+</html>

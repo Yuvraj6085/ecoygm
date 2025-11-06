@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoYugam — Transforming India's Environmental Future</title>
+  <meta name="description" content="EcoYugam — India's circular-economy waste management project connecting government, communities and technology for a cleaner tomorrow.">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --green: #16a34a;
+      --blue: #0369a1;
+      --yellow: #f59e0b;
+      --red: #ef4444;
+    }
+    
+    .hero-bg { 
+      background-image: linear-gradient(180deg, rgba(6,95,70,0.06), rgba(255,255,255,0.0)); 
+    }
+    
+    .pill-shadow { 
+      box-shadow: 0 6px 18px rgba(15,23,42,0.07); 
+    }
+    
+    .iframe-wrap { 
+      position: relative; 
+      padding-bottom: 56.25%; 
+      height: 0; 
+      overflow: hidden; 
+    }
+    
+    .iframe-wrap iframe { 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, #16a34a, #0d9488);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .floating-animation {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translate(0, 0px); }
+      50% { transform: translate(0, -10px); }
+      100% { transform: translate(0, 0px); }
+    }
+    
+    .progress-ring__circle {
+      transition: stroke-dashoffset 0.35s;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+    
+    .typewriter {
+      overflow: hidden;
+      border-right: .15em solid #16a34a;
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: .15em;
+      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+    }
+    
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #16a34a; }
+    }
+    
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 50px;
+      border: 2px solid #16a34a;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+    
+    .scroll-indicator::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      background: #16a34a;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      animation: scroll 2s infinite;
+    }
+    
+    @keyframes scroll {
+      0% { opacity: 0; transform: translateX(-50%) translateY(0); }
+      50% { opacity: 1; }
+      100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    }
+    
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    .custom-shape-divider-bottom-1688940000 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      transform: rotate(180deg);
+    }
+    
+    .custom-shape-divider-bottom-1688940000 svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 50px;
+    }
+    
+    .custom-shape-divider-bottom-1688940000 .shape-fill {
+      fill: #FFFFFF;
+    }
+    
+    .glow {
+      box-shadow: 0 0 15px rgba(22, 163, 74, 0.3);
+    }
+    
+    .tab-active {
+      border-bottom: 3px solid #16a34a;
+      color: #16a34a;
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-800 bg-white">
+  <!-- Header -->
+  <header class="bg-white sticky top-0 z-50 border-b transition-all duration-300" id="header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold floating-animation">EY</div>
+          <div>
+            <a href="{{ url_for('index') }}" class="text-lg font-semibold">EcoYugam</a>
+            <p class="text-xs text-slate-500">Transforming India's Environmental Future</p>
+          </div>
+        </div>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="{{ url_for('index') }}" class="hover:text-emerald-600 transition-colors">Home</a>
+          <a href="{{ url_for('services') }}" class="hover:text-emerald-600 transition-colors">Services</a>
+          <a href="{{ url_for('vision') }}" class="hover:text-emerald-600 transition-colors">Vision</a>
+          <a href="{{ url_for('about') }}" class="hover:text-emerald-600 transition-colors">About Us</a>
+          <a href="{{ url_for('contact') }}" class="text-white bg-emerald-600 px-3 py-2 rounded shadow-sm hover:bg-emerald-700 transition-colors glow">Contact</a>
+        </nav>
+
+        <div class="md:hidden">
+          <button id="menuBtn" class="p-2 rounded hover:bg-slate-100 transition-colors">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden border-t md:hidden bg-white">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="{{ url_for('index') }}" class="hover:text-emerald-600 transition-colors py-2">Home</a>
+        <a href="{{ url_for('services') }}" class="hover:text-emerald-600 transition-colors py-2">Services</a>
+        <a href="{{ url_for('vision') }}" class="hover:text-emerald-600 transition-colors py-2">Vision</a>
+        <a href="{{ url_for('about') }}" class="hover:text-emerald-600 transition-colors py-2">About Us</a>
+        <a href="{{ url_for('contact') }}" class="text-white bg-emerald-600 px-3 py-2 rounded shadow-sm hover:bg-emerald-700 transition-colors glow inline-block text-center">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-bg pt-12 pb-20 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-emerald-50/30 to-cyan-50/30 z-0"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div data-aos="fade-right" data-aos-duration="800">
+            <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
+              Transforming India's Environmental Future 
+              <span class="gradient-text">Through Circular Economy Innovation</span>
+            </h1>
+            <p class="mt-4 text-slate-700 max-w-2xl text-lg">
+              EcoYugam is a comprehensive waste management and sustainability platform connecting government, communities, and technology for a cleaner tomorrow. We eliminate waste by keeping reusable resources circulating while creating economic opportunities and restoring ecosystems.
+            </p>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#get-involved" class="inline-flex items-center px-6 py-3 rounded-md bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors glow">
+                Join the Movement <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+              <a href="#programs" class="inline-flex items-center px-6 py-3 rounded-md border text-slate-700 hover:bg-slate-50 transition-colors">
+                Explore Programs <i class="fas fa-search ml-2"></i>
+              </a>
+            </div>
+
+            <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-slate-600">
+              <div class="p-4 bg-emerald-50 rounded-lg text-center hover:shadow-md transition-shadow">
+                <div class="text-2xl font-bold text-emerald-600" data-count-target="9500000">9.5M</div>
+                <div>tons/year reusable waste</div>
+              </div>
+              <div class="p-4 bg-amber-50 rounded-lg text-center hover:shadow-md transition-shadow">
+                <div class="text-2xl font-bold text-amber-600">8.6%</div>
+                <div>recycled materials</div>
+              </div>
+              <div class="p-4 bg-sky-50 rounded-lg text-center hover:shadow-md transition-shadow">
+                <div class="text-2xl font-bold text-sky-600">$4.5T</div>
+                <div>global circular opportunity</div>
+              </div>
+              <div class="p-4 bg-rose-50 rounded-lg text-center hover:shadow-md transition-shadow">
+                <div class="text-2xl font-bold text-rose-600">100s</div>
+                <div>govt & NGO partners</div>
+              </div>
+            </div>
+          </div>
+
+          <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+            <div class="bg-white rounded-2xl p-5 pill-shadow hover:shadow-xl transition-shadow duration-300">
+              <h3 class="font-semibold text-lg">Get a quick overview</h3>
+              <p class="text-sm text-slate-600 mt-2">Learn how EcoYugam's four-pillar approach works and the programs we run across India.</p>
+              <div class="mt-4 grid grid-cols-2 gap-3">
+                <div class="p-3 rounded-lg border-l-4 border-green-500 bg-green-50 hover:bg-green-100 transition-colors">
+                  <strong>Environmental</strong>
+                  <p class="text-xs text-slate-500">Waste reduction, restoration</p>
+                </div>
+                <div class="p-3 rounded-lg border-l-4 border-blue-500 bg-blue-50 hover:bg-blue-100 transition-colors">
+                  <strong>Social</strong>
+                  <p class="text-xs text-slate-500">Community empowerment</p>
+                </div>
+                <div class="p-3 rounded-lg border-l-4 border-yellow-400 bg-yellow-50 hover:bg-yellow-100 transition-colors">
+                  <strong>Economic</strong>
+                  <p class="text-xs text-slate-500">Circular revenue models</p>
+                </div>
+                <div class="p-3 rounded-lg border-l-4 border-red-500 bg-red-50 hover:bg-red-100 transition-colors">
+                  <strong>Technology</strong>
+                  <p class="text-xs text-slate-500">Smart tracking & analytics</p>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <div class="relative rounded-md overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=60" alt="community restoration" class="w-full object-cover h-44 transition-transform duration-500 hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-4">
+                    <span class="text-white text-sm font-medium">Community Restoration in Action</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </section>
+
+   <!-- Pillars Section -->
+<section id="pillars" class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-3xl font-bold">Our Four Pillars of Action</h2>
+      <p class="mt-4 text-slate-600 max-w-3xl mx-auto">EcoYugam operates on four interconnected pillars that form the foundation of our comprehensive approach to community development and environmental stewardship.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Waste Management -->
+      <div class="bg-green-50 rounded-xl p-6 hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="0">
+        <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-4">
+          <i class="fas fa-recycle text-green-600 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-green-800 mb-2">Waste Management</h3>
+        <p class="text-slate-600">Implementing efficient waste collection, segregation, and processing systems to minimize environmental impact and promote recycling.</p>
+        <ul class="mt-4 text-sm text-slate-600 space-y-1">
+          <li><i class="fas fa-check text-green-500 mr-2"></i> Waste segregation at source</li>
+          <li><i class="fas fa-check text-green-500 mr-2"></i> Recycling and upcycling</li>
+          <li><i class="fas fa-check text-green-500 mr-2"></i> Landfill reduction</li>
+        </ul>
+      </div>
+
+      <!-- Crime Prevention -->
+      <div class="bg-blue-50 rounded-xl p-6 hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="100">
+        <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+          <i class="fas fa-shield-alt text-blue-600 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-blue-800 mb-2">Crime Prevention</h3>
+        <p class="text-slate-600">Creating safer communities through awareness, surveillance systems, and collaborative initiatives with law enforcement.</p>
+        <ul class="mt-4 text-sm text-slate-600 space-y-1">
+          <li><i class="fas fa-check text-blue-500 mr-2"></i> Community policing</li>
+          <li><i class="fas fa-check text-blue-500 mr-2"></i> Surveillance systems</li>
+          <li><i class="fas fa-check text-blue-500 mr-2"></i> Youth engagement programs</li>
+        </ul>
+      </div>
+
+      <!-- Skill Development -->
+      <div class="bg-yellow-50 rounded-xl p-6 hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="200">
+        <div class="w-14 h-14 rounded-full bg-yellow-100 flex items-center justify-center mb-4">
+          <i class="fas fa-graduation-cap text-yellow-600 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-yellow-800 mb-2">Skill Development</h3>
+        <p class="text-slate-600">Empowering individuals with vocational training and professional skills to enhance employability and entrepreneurship.</p>
+        <ul class="mt-4 text-sm text-slate-600 space-y-1">
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i> Vocational training</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i> Job placement assistance</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i> Entrepreneurship programs</li>
+        </ul>
+      </div>
+
+      <!-- Public Health and Environmental Remediation -->
+      <div class="bg-red-50 rounded-xl p-6 hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="300">
+        <div class="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center mb-4">
+          <i class="fas fa-heartbeat text-red-600 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-red-800 mb-2">Public Health and Environmental Remediation</h3>
+        <p class="text-slate-600">Improving community health through sanitation initiatives and restoring contaminated environments to their natural state.</p>
+        <ul class="mt-4 text-sm text-slate-600 space-y-1">
+          <li><i class="fas fa-check text-red-500 mr-2"></i> Sanitation drives</li>
+          <li><i class="fas fa-check text-red-500 mr-2"></i> Pollution monitoring</li>
+          <li><i class="fas fa-check text-red-500 mr-2"></i> Ecosystem restoration</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Impact Section -->
+<section id="impact" class="py-16 bg-gradient-to-r from-emerald-50 to-sky-50 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-3xl font-bold">Impact Dashboard</h2>
+      <p class="mt-4 text-slate-600">Tracking our progress across the four pillars of community development and environmental stewardship.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <!-- Waste Management Metric -->
+      <div class="p-6 bg-white rounded-lg pill-shadow text-center hover:shadow-lg transition-shadow" data-aos="zoom-in" data-aos-delay="0">
+        <div class="text-sm text-slate-500">Tons of waste processed</div>
+        <div class="text-3xl font-bold mt-3 text-emerald-600" id="wasteProcessed">8,750</div>
+        <div class="text-xs text-slate-500 mt-2">Through recycling & composting</div>
+        <div class="mt-4 h-2 bg-slate-200 rounded-full overflow-hidden">
+          <div class="h-full bg-emerald-500 rounded-full" style="width: 65%"></div>
+        </div>
+      </div>
+      
+      <!-- Crime Prevention Metric -->
+      <div class="p-6 bg-white rounded-lg pill-shadow text-center hover:shadow-lg transition-shadow" data-aos="zoom-in" data-aos-delay="100">
+        <div class="text-sm text-slate-500">Safer communities</div>
+        <div class="text-3xl font-bold mt-3 text-blue-600" id="saferCommunities">42</div>
+        <div class="text-xs text-slate-500 mt-2">through prevention programs</div>
+        <div class="mt-4 h-2 bg-slate-200 rounded-full overflow-hidden">
+          <div class="h-full bg-blue-500 rounded-full" style="width: 70%"></div>
+        </div>
+      </div>
+      
+      <!-- Skill Development Metric -->
+      <div class="p-6 bg-white rounded-lg pill-shadow text-center hover:shadow-lg transition-shadow" data-aos="zoom-in" data-aos-delay="200">
+        <div class="text-sm text-slate-500">Individuals trained</div>
+        <div class="text-3xl font-bold mt-3 text-yellow-600" id="individualsTrained">3,250</div>
+        <div class="text-xs text-slate-500 mt-2">in vocational skills</div>
+        <div class="mt-4 h-2 bg-slate-200 rounded-full overflow-hidden">
+          <div class="h-full bg-yellow-500 rounded-full" style="width: 80%"></div>
+        </div>
+      </div>
+      
+      <!-- Public Health & Environmental Remediation Metric -->
+      <div class="p-6 bg-white rounded-lg pill-shadow text-center hover:shadow-lg transition-shadow" data-aos="zoom-in" data-aos-delay="300">
+        <div class="text-sm text-slate-500">Health & environment sites</div>
+        <div class="text-3xl font-bold mt-3 text-red-600" id="healthSites">28</div>
+        <div class="text-xs text-slate-500 mt-2">improved through remediation</div>
+        <div class="mt-4 h-2 bg-slate-200 rounded-full overflow-hidden">
+          <div class="h-full bg-red-500 rounded-full" style="width: 55%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl p-6 pill-shadow" data-aos="fade-up">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div>
+          <h3 class="text-lg font-semibold">Real-time Impact Tracking</h3>
+          <p class="text-sm text-slate-600 mt-1">(Demo dashboard — in production, real-time data drives updates)</p>
+        </div>
+        <div class="mt-4 md:mt-0 flex gap-3">
+          <button id="demoIncrement" class="px-4 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700 transition-colors flex items-center">
+            <i class="fas fa-chart-line mr-2"></i> Simulate Impact
+          </button>
+          <button id="demoReset" class="px-4 py-2 rounded border hover:bg-slate-50 transition-colors">
+            Reset
+          </button>
+        </div>
+      </div>
+      
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="p-4 bg-slate-50 rounded-lg">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm font-medium">Waste Segregation</span>
+            <span class="text-sm font-bold text-emerald-600">72%</span>
+          </div>
+          <div class="h-2 bg-slate-200 rounded-full overflow-hidden">
+            <div class="h-full bg-emerald-500 rounded-full" style="width: 72%"></div>
+          </div>
+        </div>
+        
+        <div class="p-4 bg-slate-50 rounded-lg">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm font-medium">Community Safety</span>
+            <span class="text-sm font-bold text-blue-600">65%</span>
+          </div>
+          <div class="h-2 bg-slate-200 rounded-full overflow-hidden">
+            <div class="h-full bg-blue-500 rounded-full" style="width: 65%"></div>
+          </div>
+        </div>
+        
+        <div class="p-4 bg-slate-50 rounded-lg">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm font-medium">Skill Development</span>
+            <span class="text-sm font-bold text-yellow-600">58%</span>
+          </div>
+          <div class="h-2 bg-slate-200 rounded-full overflow-hidden">
+            <div class="h-full bg-yellow-500 rounded-full" style="width: 58%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Programs Section -->
+<section id="programs" class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-3xl font-bold">Our Programs</h2>
+      <p class="mt-4 text-slate-600 max-w-3xl mx-auto">EcoYugam implements targeted programs across India to address specific community challenges and create sustainable solutions.</p>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-4 mb-8" data-aos="fade-up">
+      <button class="px-4 py-2 rounded-full bg-emerald-600 text-white tab-active">All Programs</button>
+      <button class="px-4 py-2 rounded-full border hover:bg-slate-50 transition-colors">Waste Management</button>
+      <button class="px-4 py-2 rounded-full border hover:bg-slate-50 transition-colors">Crime Prevention</button>
+      <button class="px-4 py-2 rounded-full border hover:bg-slate-50 transition-colors">Skill Development</button>
+      <button class="px-4 py-2 rounded-full border hover:bg-slate-50 transition-colors">Public Health</button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="0">
+        <div class="h-48 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1587332066683-5ab96de0e59c?auto=format&fit=crop&w=600&q=60" alt="Smart Bins" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="px-2 py-1 bg-emerald-100 text-emerald-800 text-xs rounded-full">Waste Management</span>
+            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Technology</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Smart Waste Management</h3>
+          <p class="text-slate-600 mb-4">IoT-enabled waste collection systems that optimize routes, reduce overflow, and provide real-time data on waste generation patterns.</p>
+          <a href="#" class="text-emerald-600 font-medium flex items-center">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="100">
+        <div class="h-48 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1593115057322-e94b77572f20?auto=format&fit=crop&w=600&q=60" alt="Community Safety" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Crime Prevention</span>
+            <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Community</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Neighborhood Watch Program</h3>
+          <p class="text-slate-600 mb-4">Community-led safety initiatives with surveillance systems and collaborative efforts with law enforcement to create safer neighborhoods.</p>
+          <a href="#" class="text-emerald-600 font-medium flex items-center">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="200">
+        <div class="h-48 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=600&q=60" alt="Skill Training" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Skill Development</span>
+            <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Livelihood</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Vocational Training Centers</h3>
+          <p class="text-slate-600 mb-4">Comprehensive skill development programs providing vocational training and job placement assistance to enhance employability.</p>
+          <a href="#" class="text-emerald-600 font-medium flex items-center">
+            Learn More <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12" data-aos="fade-up">
+      <a href="#" class="inline-flex items-center px-6 py-3 rounded-md bg-slate-100 text-slate-800 font-medium hover:bg-slate-200 transition-colors">
+        View All Programs <i class="fas fa-arrow-right ml-2"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+          <h2 class="text-3xl font-bold">What People Say</h2>
+          <p class="mt-4 text-slate-600">Hear from our partners, community members, and stakeholders about the impact of EcoYugam.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="0">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mr-4">
+                <i class="fas fa-user text-emerald-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Rajesh Kumar</h4>
+                <p class="text-sm text-slate-500">Municipal Commissioner</p>
+              </div>
+            </div>
+            <p class="text-slate-600 italic">"EcoYugam's smart waste management system has reduced our collection costs by 30% while increasing recycling rates significantly. A game-changer for urban sustainability."</p>
+            <div class="flex text-amber-400 mt-4">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                <i class="fas fa-user text-blue-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Sidhu Naidu</h4>
+                <p class="text-sm text-slate-500">Community Leader</p>
+              </div>
+            </div>
+            <p class="text-slate-600 italic">"The community composting program has not only cleaned up our neighborhood but also created a new source of organic fertilizer for our kitchen gardens. We're earning while keeping our environment clean."</p>
+            <div class="flex text-amber-400 mt-4">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                <i class="fas fa-user text-purple-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Dr. Amit Verma</h4>
+                <p class="text-sm text-slate-500">Environmental Scientist</p>
+              </div>
+            </div>
+            <p class="text-slate-600 italic">"The data-driven approach of EcoYugam provides valuable insights into waste patterns and recycling effectiveness. This is exactly what India needs to transition to a circular economy."</p>
+            <div class="flex text-amber-400 mt-4">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section id="get-involved" class="py-16 bg-emerald-600 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div data-aos="fade-right">
+            <h2 class="text-3xl font-bold mb-4">Join the Movement</h2>
+            <p class="mb-6 opacity-90">Whether you're a government body, business, community organization, or individual, there are multiple ways to get involved with EcoYugam and contribute to India's environmental transformation.</p>
+            
+            <!-- Flash messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <div class="mb-6">
+                  {% for category, message in messages %}
+                    <div class="p-4 rounded-lg {% if category == 'success' %}bg-green-500{% else %}bg-red-500{% endif %} text-white">
+                      {{ message }}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+            
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-building"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Government & Municipalities</h4>
+                  <p class="opacity-90 text-sm">Partner with us to implement smart waste management systems in your city or region.</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-industry"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Businesses & Corporations</h4>
+                  <p class="opacity-90 text-sm">Implement circular economy practices in your operations and support our initiatives through CSR.</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-hands-helping"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">NGOs & Communities</h4>
+                  <p class="opacity-90 text-sm">Collaborate with us on grassroots initiatives and community engagement programs.</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Individuals & Volunteers</h4>
+                  <p class="opacity-90 text-sm">Join our awareness campaigns, volunteer for clean-up drives, or adopt sustainable practices.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div data-aos="fade-left" data-aos-delay="200">
+            <div class="bg-white rounded-xl p-6 text-slate-800 shadow-lg">
+              <h3 class="text-xl font-bold mb-4">Get in Touch</h3>
+              <form action="{{ url_for('submit_interest') }}" method="post" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium mb-1">Name *</label>
+                  <input type="text" name="name" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium mb-1">Email *</label>
+                  <input type="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium mb-1">Organization</label>
+                  <input type="text" name="organization" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium mb-1">How would you like to get involved? *</label>
+                  <select name="involvement_type" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <option value="">Select an option</option>
+                    <option value="Government/Municipality Partnership">Government/Municipality Partnership</option>
+                    <option value="Business/Corporate Partnership">Business/Corporate Partnership</option>
+                    <option value="NGO/Community Collaboration">NGO/Community Collaboration</option>
+                    <option value="Individual/Volunteer">Individual/Volunteer</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium mb-1">Message</label>
+                  <textarea name="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+                </div>
+                
+                <button type="submit" class="w-full py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors">
+                  Submit Interest
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t py-12 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold">EY</div>
+            <div>
+              <a href="{{ url_for('index') }}" class="text-lg font-semibold">EcoYugam</a>
+              <p class="text-xs text-slate-500">Transforming India's Environmental Future</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-600 mb-4">Connecting government, communities and technology for a cleaner tomorrow through circular economy innovation.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-twitter text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="{{ url_for('index') }}" class="text-slate-600 hover:text-emerald-600 transition-colors">Home</a></li>
+            <li><a href="{{ url_for('about') }}" class="text-slate-600 hover:text-emerald-600 transition-colors">About Us</a></li>
+            <li><a href="{{ url_for('vision') }}" class="text-slate-600 hover:text-emerald-600 transition-colors">Vision</a></li>
+            <li><a href="{{ url_for('services') }}" class="text-slate-600 hover:text-emerald-600 transition-colors">Services</a></li>
+            <li><a href="{{ url_for('contact') }}" class="text-slate-600 hover:text-emerald-600 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4">Programs</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#pillars" class="text-slate-600 hover:text-emerald-600 transition-colors">Our Pillars</a></li>
+            <li><a href="#impact" class="text-slate-600 hover:text-emerald-600 transition-colors">Impact</a></li>
+            <li><a href="#programs" class="text-slate-600 hover:text-emerald-600 transition-colors">Programs</a></li>
+            <li><a href="#testimonials" class="text-slate-600 hover:text-emerald-600 transition-colors">Testimonials</a></li>
+            <li><a href="#get-involved" class="text-slate-600 hover:text-emerald-600 transition-colors">Get Involved</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-4">Contact Us</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">HITECH-CITY, Hyderabad, Telangana</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">+91 9876543210</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">contact@ecoyugam.org</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div>
+          <p class="text-sm text-slate-600">© <span id="year"></span> EcoYugam. All rights reserved.</p>
+        </div>
+        <div class="text-sm text-slate-600 mt-2 md:mt-0">Built for Government • Communities • Businesses</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-emerald-600 text-white shadow-lg hover:bg-emerald-700 transition-colors opacity-0 invisible transition-all duration-300 z-40">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Impact dashboard simulation
+    const tonsDiverted = document.getElementById('tonsDiverted');
+    const waterRestored = document.getElementById('waterRestored');
+    const communitiesEngaged = document.getElementById('communitiesEngaged');
+    const jobsCreated = document.getElementById('jobsCreated');
+    
+    let initialDemo = {
+      tons: 12450,
+      water: 18,
+      communities: 245,
+      jobs: 1850
+    };
+
+    let demo = {...initialDemo};
+
+    function setDemoValues(v) { 
+      tonsDiverted.textContent = v.tons.toLocaleString(); 
+      waterRestored.textContent = v.water.toLocaleString();
+      communitiesEngaged.textContent = v.communities.toLocaleString();
+      jobsCreated.textContent = v.jobs.toLocaleString();
+    }
+    
+    document.getElementById('demoIncrement').addEventListener('click', () => {
+      demo.tons += Math.floor(Math.random() * 500 + 100);
+      demo.water += Math.floor(Math.random() * 1 + 0);
+      demo.communities += Math.floor(Math.random() * 5 + 1);
+      demo.jobs += Math.floor(Math.random() * 20 + 5);
+      setDemoValues(demo);
+    });
+    
+    document.getElementById('demoReset').addEventListener('click', () => { 
+      demo = {...initialDemo}; 
+      setDemoValues(demo); 
+    });
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Scroll to section
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    // Scroll indicator
+    document.querySelector('.scroll-indicator').addEventListener('click', function() {
+      const target = document.querySelector(this.getAttribute('data-scroll-to'));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+  </script>
+</body>
+</html>

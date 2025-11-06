@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Impact | EcoYugam</title>
+  <meta name="description" content="See the measurable impact of EcoYugam's programs across our four pillars: Waste Management, Crime Prevention, Skill Development, and Public Health & Environmental Remediation.">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <style>
+    .gradient-text {
+      background: linear-gradient(90deg, #16a34a, #0d9488);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .floating-animation {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translate(0, 0px); }
+      50% { transform: translate(0, -10px); }
+      100% { transform: translate(0, 0px); }
+    }
+    
+    .pill-shadow { 
+      box-shadow: 0 6px 18px rgba(15,23,42,0.07); 
+    }
+    
+    .glow {
+      box-shadow: 0 0 15px rgba(22, 163, 74, 0.3);
+    }
+    
+    .impact-card {
+      transition: all 0.3s ease;
+    }
+    
+    .impact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .progress-bar {
+      height: 8px;
+      border-radius: 4px;
+      background-color: #e5e7eb;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 1.5s ease-in-out;
+    }
+    
+    .stats-counter {
+      font-variant-numeric: tabular-nums;
+    }
+    
+    .map-marker {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: #16a34a;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(22, 163, 74, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+      }
+    }
+    
+    .timeline {
+      position: relative;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: #e5e7eb;
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-left: 50px;
+      margin-bottom: 40px;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 5px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: #16a34a;
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px #16a34a;
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-800 bg-white">
+  <!-- Header -->
+  <header class="bg-white sticky top-0 z-50 border-b transition-all duration-300" id="header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold floating-animation">EY</div>
+          <div>
+            <a href="index.html" class="text-lg font-semibold">EcoYugam</a>
+            <p class="text-xs text-slate-500">Measuring Our Impact</p>
+          </div>
+        </div>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="index.html" class="hover:text-emerald-600 transition-colors">Home</a>
+          <a href="about.html" class="hover:text-emerald-600 transition-colors">About</a>
+          <a href="programs.html" class="hover:text-emerald-600 transition-colors">Programs</a>
+          <a href="impact.html" class="text-white bg-emerald-600 px-3 py-2 rounded shadow-sm hover:bg-emerald-700 transition-colors glow">Impact</a>
+          <a href="contact.html" class="hover:text-emerald-600 transition-colors">Contact</a>
+        </nav>
+        <div class="md:hidden">
+          <button id="menuBtn" class="p-2 rounded hover:bg-slate-100 transition-colors">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden border-t md:hidden bg-white">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="index.html" class="py-2 hover:text-emerald-600 transition-colors">Home</a>
+        <a href="about.html" class="py-2 hover:text-emerald-600 transition-colors">About</a>
+        <a href="programs.html" class="py-2 hover:text-emerald-600 transition-colors">Programs</a>
+        <a href="impact.html" class="py-2 font-semibold text-emerald-600">Impact</a>
+        <a href="contact.html" class="py-2 hover:text-emerald-600 transition-colors">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-16 bg-gradient-to-b from-emerald-50 to-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-emerald-200 floating-animation"></div>
+      <div class="absolute top-40 right-20 w-16 h-16 rounded-full bg-cyan-200 floating-animation" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-20 left-1/4 w-24 h-24 rounded-full bg-emerald-100 floating-animation" style="animation-delay: 2s;"></div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4" data-aos="fade-up">Measuring Our Impact</h1>
+      <p class="text-slate-600 text-lg max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="200">
+        At EcoYugam, we believe in transparency and accountability. Explore the measurable impact of our programs across our four pillars of community transformation.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
+        <a href="#key-metrics" class="px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors glow">
+          Key Metrics <i class="fas fa-chart-bar ml-2"></i>
+        </a>
+        <a href="#pillar-impact" class="px-6 py-3 border border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-colors">
+          Pillar Impact <i class="fas fa-chart-pie ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Metrics Section -->
+  <section id="key-metrics" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Key Impact Metrics</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">Our comprehensive approach to community development delivers measurable results across our four pillars of transformation.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <!-- Waste Management Metric -->
+        <div class="impact-card bg-white p-6 rounded-xl border shadow-sm text-center" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-recycle text-emerald-600 text-2xl"></i>
+          </div>
+          <div class="text-3xl font-bold stats-counter mb-2 text-emerald-600" data-count="8750">8,750</div>
+          <p class="text-slate-600 font-medium">Tons of Waste Processed</p>
+          <div class="mt-4 progress-bar">
+            <div class="progress-fill bg-emerald-500" style="width: 65%"></div>
+          </div>
+          <p class="text-xs text-slate-500 mt-2">65% of target achieved</p>
+        </div>
+        
+        <!-- Crime Prevention Metric -->
+        <div class="impact-card bg-white p-6 rounded-xl border shadow-sm text-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-shield-alt text-blue-600 text-2xl"></i>
+          </div>
+          <div class="text-3xl font-bold stats-counter mb-2 text-blue-600" data-count="42">42</div>
+          <p class="text-slate-600 font-medium">Safer Communities</p>
+          <div class="mt-4 progress-bar">
+            <div class="progress-fill bg-blue-500" style="width: 70%"></div>
+          </div>
+          <p class="text-xs text-slate-500 mt-2">70% of target achieved</p>
+        </div>
+        
+        <!-- Skill Development Metric -->
+        <div class="impact-card bg-white p-6 rounded-xl border shadow-sm text-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-graduation-cap text-amber-600 text-2xl"></i>
+          </div>
+          <div class="text-3xl font-bold stats-counter mb-2 text-amber-600" data-count="3250">3,250</div>
+          <p class="text-slate-600 font-medium">Individuals Trained</p>
+          <div class="mt-4 progress-bar">
+            <div class="progress-fill bg-amber-500" style="width: 80%"></div>
+          </div>
+          <p class="text-xs text-slate-500 mt-2">80% of target achieved</p>
+        </div>
+        
+        <!-- Public Health & Environmental Remediation Metric -->
+        <div class="impact-card bg-white p-6 rounded-xl border shadow-sm text-center" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-heartbeat text-red-600 text-2xl"></i>
+          </div>
+          <div class="text-3xl font-bold stats-counter mb-2 text-red-600" data-count="28">28</div>
+          <p class="text-slate-600 font-medium">Health & Environment Sites Improved</p>
+          <div class="mt-4 progress-bar">
+            <div class="progress-fill bg-red-500" style="width: 55%"></div>
+          </div>
+          <p class="text-xs text-slate-500 mt-2">55% of target achieved</p>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 rounded-xl p-6" data-aos="fade-up">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-bold text-slate-800 mb-4">Waste Processing Progress</h3>
+            <canvas id="wasteChart" height="250"></canvas>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-800 mb-4">Program Reach Across India</h3>
+            <div class="relative bg-white rounded-lg p-4 h-64">
+              <div class="absolute inset-0 bg-gradient-to-r from-emerald-50 to-cyan-50 rounded-lg"></div>
+              <div class="relative z-10 h-full">
+                <!-- Simplified India map with markers -->
+                <div class="relative h-full">
+                  <div class="map-marker" style="top: 30%; left: 25%;"></div>
+                  <div class="map-marker" style="top: 45%; left: 35%;"></div>
+                  <div class="map-marker" style="top: 60%; left: 30%;"></div>
+                  <div class="map-marker" style="top: 35%; left: 50%;"></div>
+                  <div class="map-marker" style="top: 55%; left: 55%;"></div>
+                  <div class="map-marker" style="top: 40%; left: 70%;"></div>
+                  <div class="map-marker" style="top: 65%; left: 75%;"></div>
+                  <div class="absolute bottom-4 left-4 bg-white p-3 rounded-lg shadow-sm">
+                    <p class="text-sm font-medium text-slate-800">Active in 12 states</p>
+                    <p class="text-xs text-slate-600">245 communities engaged</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillar Impact Section -->
+  <section id="pillar-impact" class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Impact Across Our Four Pillars</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">Our programs deliver measurable results across all four pillars of our community development approach.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div data-aos="fade-right">
+          <h3 class="text-2xl font-bold text-slate-800 mb-6">Waste Management & Public Health</h3>
+          <p class="text-slate-600 mb-6">Through our waste management and public health programs, we've significantly improved community health and environmental conditions.</p>
+          
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-slate-700 font-medium">Waste Segregation Rate</span>
+                <span class="text-emerald-600 font-bold">72%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill bg-emerald-500" style="width: 72%"></div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-slate-700 font-medium">Health & Sanitation Improvements</span>
+                <span class="text-blue-600 font-bold">65%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill bg-blue-500" style="width: 65%"></div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-slate-700 font-medium">Pollution Reduction</span>
+                <span class="text-amber-600 font-bold">55%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill bg-amber-500" style="width: 55%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div data-aos="fade-left" data-aos-delay="200">
+          <h3 class="text-2xl font-bold text-slate-800 mb-6">Crime Prevention & Skill Development</h3>
+          <p class="text-slate-600 mb-6">Our safety and skill-building initiatives create safer communities with enhanced economic opportunities.</p>
+          
+          <div class="bg-white rounded-xl p-6 pill-shadow">
+            <canvas id="communityChart" height="250"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl p-6 pill-shadow" data-aos="fade-up">
+        <h3 class="text-2xl font-bold text-slate-800 mb-6 text-center">Annual Impact Growth</h3>
+        <canvas id="growthChart" height="300"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Impact Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Community & Economic Impact</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">Beyond environmental benefits, our programs create safer communities, develop skills, and generate economic opportunities.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div class="impact-card bg-emerald-50 p-6 rounded-xl text-center" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-user-shield text-emerald-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-emerald-800 mb-2">Community Safety</h3>
+          <div class="text-3xl font-bold text-emerald-700 mb-2 stats-counter" data-count="42">42</div>
+          <p class="text-slate-600">Safer communities through prevention programs</p>
+        </div>
+        
+        <div class="impact-card bg-blue-50 p-6 rounded-xl text-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-user-graduate text-blue-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-blue-800 mb-2">Skill Development</h3>
+          <div class="text-3xl font-bold text-blue-700 mb-2 stats-counter" data-count="3250">3,250</div>
+          <p class="text-slate-600">Individuals trained in vocational skills</p>
+        </div>
+        
+        <div class="impact-card bg-amber-50 p-6 rounded-xl text-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-briefcase text-amber-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-amber-800 mb-2">Employment Generated</h3>
+          <div class="text-3xl font-bold text-amber-700 mb-2 stats-counter" data-count="1450">1,450</div>
+          <p class="text-slate-600">Jobs created through our initiatives</p>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 rounded-xl p-6" data-aos="fade-up">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-2xl font-bold text-slate-800 mb-6">Success Stories</h3>
+            
+            <div class="space-y-6">
+              <div class="bg-white p-5 rounded-lg shadow-sm">
+                <div class="flex items-start mb-3">
+                  <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0">
+                    <i class="fas fa-user text-emerald-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-800">Ramesh's Recycling Enterprise</h4>
+                    <p class="text-sm text-slate-500">Former waste picker, now business owner</p>
+                  </div>
+                </div>
+                <p class="text-slate-600 text-sm">"With EcoYugam's training and support, I transformed from a waste picker to owning a small recycling unit. I now employ 8 people from my community and process 2 tons of plastic monthly."</p>
+              </div>
+              
+              <div class="bg-white p-5 rounded-lg shadow-sm">
+                <div class="flex items-start mb-3">
+                  <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                    <i class="fas fa-user text-blue-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-800">Neighborhood Watch Success</h4>
+                    <p class="text-sm text-slate-500">Community safety transformation</p>
+                  </div>
+                </div>
+                <p class="text-slate-600 text-sm">"Our neighborhood was struggling with petty crimes until EcoYugam helped us set up a community watch program. With surveillance systems and regular patrols, crime has dropped by 65% in our area."</p>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-2xl font-bold text-slate-800 mb-6">Impact Timeline</h3>
+            
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <div class="text-sm text-emerald-600 font-semibold">2020</div>
+                  <h4 class="font-bold text-slate-800 mt-1">Pilot Program Launch</h4>
+                  <p class="text-slate-600 text-sm mt-2">Launched in 3 pilot communities focusing on waste management and community safety.</p>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <div class="text-sm text-emerald-600 font-semibold">2021</div>
+                  <h4 class="font-bold text-slate-800 mt-1">Expansion & Skill Development</h4>
+                  <p class="text-slate-600 text-sm mt-2">Expanded to 12 states and introduced vocational training programs.</p>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <div class="text-sm text-emerald-600 font-semibold">2022</div>
+                  <h4 class="font-bold text-slate-800 mt-1">Public Health Integration</h4>
+                  <p class="text-slate-600 text-sm mt-2">Integrated public health initiatives and environmental remediation into our programs.</p>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                  <div class="text-sm text-emerald-600 font-semibold">2023-Present</div>
+                  <h4 class="font-bold text-slate-800 mt-1">Four Pillar Framework</h4>
+                  <p class="text-slate-600 text-sm mt-2">Fully implemented our four-pillar approach across 18 states, creating measurable impact across all dimensions.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-4" data-aos="fade-up">Join Us in Creating Impact</h2>
+      <p class="text-xl opacity-90 mb-8" data-aos="fade-up" data-aos-delay="100">
+        Help us expand our reach and create more impact across all four pillars of community transformation.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+        <a href="contact.html" class="inline-flex items-center px-6 py-3 rounded-md bg-white text-emerald-600 font-semibold hover:bg-slate-100 transition-colors">
+          Partner With Us <i class="fas fa-handshake ml-2"></i>
+        </a>
+        <a href="programs.html" class="inline-flex items-center px-6 py-3 rounded-md border border-white text-white hover:bg-white/10 transition-colors">
+          Support Our Programs <i class="fas fa-heart ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t py-12 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold">EY</div>
+            <div>
+              <a href="index.html" class="font-bold text-lg text-emerald-600">EcoYugam</a>
+              <p class="text-xs text-slate-500">Measuring Our Impact</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-600 mb-4">Transforming communities through our four-pillar approach to sustainable development.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-twitter text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Home</a></li>
+            <li><a href="about.html" class="text-slate-600 hover:text-emerald-600 transition-colors">About Us</a></li>
+            <li><a href="programs.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Programs</a></li>
+            <li><a href="impact.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Impact</a></li>
+            <li><a href="contact.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">Our Pillars</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="pillars.html#waste-management" class="text-slate-600 hover:text-emerald-600 transition-colors">Waste Management</a></li>
+            <li><a href="pillars.html#crime-prevention" class="text-slate-600 hover:text-emerald-600 transition-colors">Crime Prevention</a></li>
+            <li><a href="pillars.html#skill-development" class="text-slate-600 hover:text-emerald-600 transition-colors">Skill Development</a></li>
+            <li><a href="pillars.html#public-health" class="text-slate-600 hover:text-emerald-600 transition-colors">Public Health</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">Contact Us</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">HITECH-CITY, Hyderabad, India</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">+91 9876543210</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">contact@ecoyugam.org</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div>
+          <p class="text-sm text-slate-600">© <span id="year"></span> EcoYugam. All rights reserved.</p>
+        </div>
+        <div class="text-sm text-slate-600 mt-2 md:mt-0">Data-driven impact for thriving communities</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-emerald-600 text-white shadow-lg hover:bg-emerald-700 transition-colors opacity-0 invisible transition-all duration-300 z-40">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Animated counters
+    const counters = document.querySelectorAll('.stats-counter');
+    const speed = 200;
+    
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-count');
+        let count = +counter.innerText.replace('K', '000').replace('Cr', '0000000').replace('₹', '').replace(',', '');
+        const increment = target / speed;
+        
+        if (count < target) {
+          counter.innerText = formatNumber(Math.ceil(count + increment), counter.getAttribute('data-count'));
+          setTimeout(animateCounters, 1);
+        } else {
+          counter.innerText = formatNumber(target, counter.getAttribute('data-count'));
+        }
+      });
+    };
+    
+    // Format numbers with K, Cr suffixes
+    function formatNumber(num, original) {
+      if (original.includes('K')) {
+        return (num / 1000).toFixed(0) + 'K';
+      } else if (original.includes('Cr')) {
+        return '₹' + (num / 10000000).toFixed(1) + 'Cr';
+      } else {
+        return num.toLocaleString();
+      }
+    }
+    
+    // Start counters when section is in view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    observer.observe(document.getElementById('key-metrics'));
+
+    // Charts
+    // Waste Chart
+    const wasteCtx = document.getElementById('wasteChart').getContext('2d');
+    const wasteChart = new Chart(wasteCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Plastic', 'Paper', 'Organic', 'Metal', 'Glass', 'E-Waste'],
+        datasets: [{
+          label: 'Tons Processed',
+          data: [2200, 1800, 3500, 600, 450, 200],
+          backgroundColor: [
+            '#16a34a',
+            '#0d9488',
+            '#10b981',
+            '#059669',
+            '#047857',
+            '#065f46'
+          ],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Tons'
+            }
+          }
+        }
+      }
+    });
+
+    // Community Chart
+    const communityCtx = document.getElementById('communityChart').getContext('2d');
+    const communityChart = new Chart(communityCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Crime Prevention', 'Skill Development', 'Employment Generated', 'Community Safety'],
+        datasets: [{
+          data: [30, 35, 20, 15],
+          backgroundColor: [
+            '#0369a1',
+            '#f59e0b',
+            '#16a34a',
+            '#0ea5e9'
+          ],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    });
+
+    // Growth Chart
+    const growthCtx = document.getElementById('growthChart').getContext('2d');
+    const growthChart = new Chart(growthCtx, {
+      type: 'line',
+      data: {
+        labels: ['2019', '2020', '2021', '2022', '2023'],
+        datasets: [
+          {
+            label: 'Waste Processed (tons)',
+            data: [1000, 2500, 4500, 7000, 8750],
+            borderColor: '#16a34a',
+            backgroundColor: 'rgba(22, 163, 74, 0.1)',
+            fill: true,
+            tension: 0.4
+          },
+          {
+            label: 'Individuals Trained',
+            data: [500, 1200, 2000, 2800, 3250],
+            borderColor: '#f59e0b',
+            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+            fill: true,
+            tension: 0.4
+          },
+          {
+            label: 'Safer Communities',
+            data: [5, 15, 25, 35, 42],
+            borderColor: '#0369a1',
+            backgroundColor: 'rgba(3, 105, 161, 0.1)',
+            fill: true,
+            tension: 0.4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+  </script>
+</body>
+</html>

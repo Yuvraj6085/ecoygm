@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact EcoYugam — Get In Touch</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .gradient-text {
+      background: linear-gradient(90deg, #16a34a, #0d9488);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .floating-animation {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translate(0, 0px); }
+      50% { transform: translate(0, -10px); }
+      100% { transform: translate(0, 0px); }
+    }
+    
+    .glow {
+      box-shadow: 0 0 15px rgba(22, 163, 74, 0.3);
+    }
+    
+    .contact-card {
+      transition: all 0.3s ease;
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-input:focus {
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+    }
+    
+    .map-container {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .success-message {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .success-message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .error-message {
+      color: #ef4444;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+    
+    .input-error {
+      border-color: #ef4444;
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-800 antialiased">
+  <!-- Header -->
+  <header class="bg-white border-b sticky top-0 z-50 transition-all duration-300" id="header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <a href="{{ url_for('index') }}" class="font-bold text-xl text-emerald-600 flex items-center gap-2">
+        <div class="rounded-full w-8 h-8 flex items-center justify-center bg-emerald-600 text-white font-bold text-sm">EY</div>
+        EcoYugam
+      </a>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="{{ url_for('index') }}" class="hover:text-emerald-600 transition-colors">Home</a>
+        <a href="{{ url_for('about') }}" class="hover:text-emerald-600 transition-colors">About</a>
+        <a href="{{ url_for('programs') }}" class="hover:text-emerald-600 transition-colors">Programs</a>
+        <a href="{{ url_for('contact') }}" class="font-semibold text-emerald-600">Contact</a>
+      </nav>
+      <div class="md:hidden">
+        <button id="menuBtn" class="p-2 rounded hover:bg-slate-100 transition-colors">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden border-t md:hidden bg-white">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="{{ url_for('index') }}" class="py-2 hover:text-emerald-600 transition-colors">Home</a>
+        <a href="{{ url_for('about') }}" class="py-2 hover:text-emerald-600 transition-colors">About</a>
+        <a href="{{ url_for('programs') }}" class="py-2 hover:text-emerald-600 transition-colors">Programs</a>
+        <a href="{{ url_for('contact') }}" class="py-2 font-semibold text-emerald-600">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-12">
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+          {% for category, message in messages %}
+            <div class="p-4 rounded-lg {% if category == 'success' %}bg-green-500{% else %}bg-red-500{% endif %} text-white text-center">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-emerald-50 to-cyan-50 py-16 overflow-hidden">
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-emerald-200 floating-animation"></div>
+        <div class="absolute top-40 right-20 w-16 h-16 rounded-full bg-cyan-200 floating-animation" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-20 left-1/4 w-24 h-24 rounded-full bg-emerald-100 floating-animation" style="animation-delay: 2s;"></div>
+      </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <h1 class="text-4xl sm:text-5xl font-extrabold" data-aos="fade-up">Get In Touch</h1>
+        <p class="mt-4 text-slate-600 max-w-3xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="200">
+          We'd love to hear from you. Whether you have questions about our programs, want to partner with us, or simply want to learn more about our mission, our team is here to help.
+        </p>
+        <div class="mt-8 flex justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
+          <a href="#contact-form" class="px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors glow">
+            Send a Message <i class="fas fa-paper-plane ml-2"></i>
+          </a>
+          <a href="#locations" class="px-6 py-3 border border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-colors">
+            Our Locations <i class="fas fa-map-marker-alt ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Methods Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+          <h2 class="text-3xl font-bold">How to Reach Us</h2>
+          <p class="mt-4 text-slate-600 max-w-3xl mx-auto">Choose the method that works best for you. We're always available to discuss how we can work together for a sustainable future.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="contact-card bg-white p-6 rounded-xl border shadow-sm text-center" data-aos="fade-up" data-aos-delay="0">
+            <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-phone-alt text-emerald-600 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-emerald-700 mb-2">Call Us</h3>
+            <p class="text-slate-600 mb-4">Speak directly with our team during business hours.</p>
+            <div class="space-y-2">
+              <a href="tel:+911123456789" class="block text-lg font-semibold text-slate-800 hover:text-emerald-600 transition-colors">+91 6304746286</a>
+              <p class="text-sm text-slate-500">Mon-Fri, 9:00 AM - 6:00 PM IST</p>
+            </div>
+          </div>
+          
+          <div class="contact-card bg-white p-6 rounded-xl border shadow-sm text-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-envelope text-blue-600 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-blue-700 mb-2">Email Us</h3>
+            <p class="text-slate-600 mb-4">Send us a message and we'll respond within 24 hours.</p>
+            <div class="space-y-2">
+              <a href="mailto:contact@ecoyugam.org" class="block text-lg font-semibold text-slate-800 hover:text-emerald-600 transition-colors">contact@ecoyugam.org</a>
+              <p class="text-sm text-slate-500">For general inquiries</p>
+            </div>
+          </div>
+          
+          <div class="contact-card bg-white p-6 rounded-xl border shadow-sm text-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-map-marker-alt text-amber-600 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-amber-700 mb-2">Visit Us</h3>
+            <p class="text-slate-600 mb-4">Schedule a visit to our headquarters or regional offices.</p>
+            <div class="space-y-2">
+              <p class="text-lg font-semibold text-slate-800"></p>
+              <p class="text-sm text-slate-500">New Delhi, India 110001</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form & Info Section -->
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Contact Form -->
+          <div data-aos="fade-right">
+            <h2 class="text-3xl font-bold mb-6">Send Us a Message</h2>
+            <p class="text-slate-600 mb-8">Fill out the form below and our team will get back to you as soon as possible.</p>
+            
+           <form id="contact-form" action="{{ url_for('submit_interest') }}" method="post" class="bg-white p-8 rounded-xl shadow-sm">
+
+              <div class="form-group">
+                <label for="name" class="block text-sm font-medium text-slate-700 mb-2">Full Name *</label>
+                <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-slate-300 rounded-lg form-input focus:outline-none focus:border-emerald-500 transition-colors" placeholder="Your full name" required>
+                <div class="error-message" id="name-error">Please enter your name</div>
+              </div>
+              
+              <div class="form-group">
+                <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Email Address *</label>
+                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-slate-300 rounded-lg form-input focus:outline-none focus:border-emerald-500 transition-colors" placeholder="your.email@example.com" required>
+                <div class="error-message" id="email-error">Please enter a valid email address</div>
+              </div>
+              
+              <div class="form-group">
+                <label for="organization" class="block text-sm font-medium text-slate-700 mb-2">Organization</label>
+                <input type="text" id="organization" name="organization" class="w-full px-4 py-3 border border-slate-300 rounded-lg form-input focus:outline-none focus:border-emerald-500 transition-colors" placeholder="Your company or organization">
+              </div>
+              
+              <div class="form-group">
+                <label for="inquiry-type" class="block text-sm font-medium text-slate-700 mb-2">Inquiry Type *</label>
+                <select id="inquiry-type" name="involvement_type" class="w-full px-4 py-3 border border-slate-300 rounded-lg form-input focus:outline-none focus:border-emerald-500 transition-colors" required>
+                  <option value="">Select an option</option>
+                  <option value="partnership">Partnership Opportunity</option>
+                  <option value="volunteer">Volunteer Inquiry</option>
+                  <option value="program">Program Information</option>
+                  <option value="media">Media Inquiry</option>
+                  <option value="career">Career Opportunity</option>
+                  <option value="other">Other</option>
+                </select>
+                <div class="error-message" id="inquiry-type-error">Please select an inquiry type</div>
+              </div>
+              
+              <div class="form-group">
+                <label for="message" class="block text-sm font-medium text-slate-700 mb-2">Message *</label>
+                <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-slate-300 rounded-lg form-input focus:outline-none focus:border-emerald-500 transition-colors" placeholder="Tell us about your inquiry..." required></textarea>
+                <div class="error-message" id="message-error">Please enter your message</div>
+              </div>
+              
+              <button type="submit" class="w-full py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors glow flex items-center justify-center">
+                <i class="fas fa-paper-plane mr-2"></i> Send Message
+              </button>
+            </form>
+          </div>
+          
+          <!-- Contact Information -->
+          <div data-aos="fade-left" data-aos-delay="200">
+            <h2 class="text-3xl font-bold mb-6">Our Information</h2>
+            <p class="text-slate-600 mb-8">Find all the ways you can connect with EcoYugam below.</p>
+            
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-map-marker-alt text-emerald-600"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-slate-800">Headquarters</h3>
+                  <p class="text-slate-600 mt-1">Sri Sai Feather 'n' Splash, Plot No. 142 & 143, Swimming Pool Road, Gopal Nagar, Anshi Enclave, K P H B Phase 9, Kukatpally, Hyderabad, Telangana 500085</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-phone-alt text-blue-600"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-slate-800">Phone Numbers</h3>
+                  <div class="mt-1 space-y-1">
+                    <p class="text-slate-600">General Inquiries: <a href="tel:+911123456789" class="text-emerald-600 hover:underline">+91 6304746286</a></p>
+                   
+                    <p class="text-slate-600">Media: <a href="tel:+911123456791" class="text-emerald-600 hover:underline">+91 9351608590</a></p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-envelope text-amber-600"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-slate-800">Email Addresses</h3>
+                  <div class="mt-1 space-y-1">
+                    <p class="text-slate-600">General: <a href="mailto:contact@ecoyugam.org" class="text-emerald-600 hover:underline">contact@ecoyugam.org</a></p>
+
+                    <p class="text-slate-600">Careers: <a href="mailto:careers@ecoyugam.org" class="text-emerald-600 hover:underline">careers@ecoyugam.org</a></p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-clock text-purple-600"></i>
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold text-slate-800">Business Hours</h3>
+                  <div class="mt-1 space-y-1">
+                    <p class="text-slate-600">Monday - Friday: 9:00 AM - 6:00 PM IST</p>
+                    <p class="text-slate-600">Saturday: 10:00 AM - 2:00 PM IST</p>
+                    <p class="text-slate-600">Sunday: Closed</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-slate-200">
+              <h3 class="text-lg font-semibold text-slate-800 mb-4">Follow Us</h3>
+              <div class="flex gap-4">
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+                  <i class="fab fa-youtube"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="locations" class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+          <h2 class="text-3xl font-bold">Our Locations</h2>
+          <p class="mt-4 text-slate-600 max-w-3xl mx-auto">EcoYugam operates across India with regional offices in major cities to better serve communities nationwide.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div data-aos="fade-right">
+            <div class="map-container h-96">
+              <!-- Embedded Google Map -->
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.366537322849!2d77.20872217527185!3d28.628266075673494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1688940000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+          
+          <div data-aos="fade-left" data-aos-delay="200">
+            <div class="space-y-6">
+              <div class="p-6 bg-slate-50 rounded-xl">
+                <h3 class="text-xl font-bold text-emerald-700 mb-2">Headquarters - Hyderabad, Telangana</h3>
+                <p class="text-slate-600">Sri Sai Feather 'n' Splash, Plot No. 142 & 143, Swimming Pool Road, Gopal Nagar, Anshi Enclave, K P H B Phase 9, Kukatpally, Hyderabad, Telangana 500085</p>
+                <div class="mt-4 flex items-center text-sm text-slate-500">
+                  <i class="fas fa-phone-alt mr-2"></i>
+                  <span>+91 6304746286</span>
+                </div>
+                <div class="mt-2 flex items-center text-sm text-slate-500">
+                  <i class="fas fa-envelope mr-2"></i>
+                  <span>hyderabad@ecoyugam.org</span>
+                </div>
+              </div>
+              
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+          <h2 class="text-3xl font-bold">Frequently Asked Questions</h2>
+          <p class="mt-4 text-slate-600">Find quick answers to common questions about EcoYugam and our programs.</p>
+        </div>
+        
+        <div class="space-y-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="text-lg font-semibold text-slate-800 mb-2">How can my organization partner with EcoYugam?</h3>
+            <p class="text-slate-600">We welcome partnerships with corporations, NGOs, government bodies, and educational institutions. Please contact our partnerships team at partnerships@ecoyugam.org or use the contact form above to discuss potential collaboration.</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="text-lg font-semibold text-slate-800 mb-2">Do you offer volunteering opportunities?</h3>
+            <p class="text-slate-600">Yes! We have various volunteering opportunities across our programs. You can apply through our website or contact our volunteer coordinator at volunteers@ecoyugam.org for more information.</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="text-lg font-semibold text-slate-800 mb-2">How can I implement EcoYugam's programs in my community?</h3>
+            <p class="text-slate-600">We work with communities across India to implement our waste management and sustainability programs. Contact our community engagement team to discuss how we can bring our initiatives to your area.</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <h3 class="text-lg font-semibold text-slate-800 mb-2">Do you provide educational resources or workshops?</h3>
+            <p class="text-slate-600">Yes, we offer educational workshops, training programs, and resources for schools, colleges, and community groups. Contact our education team at education@ecoyugam.org for more details.</p>
+          </div>
+        </div>
+        
+        <div class="text-center mt-12" data-aos="fade-up">
+          <p class="text-slate-600">Don't see your question here? <a href="#contact-form" class="text-emerald-600 font-semibold hover:underline">Contact us directly</a> and we'll be happy to help.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-800 text-slate-300 py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold">EY</div>
+            <div>
+              <a href="{{ url_for('index') }}" class="font-bold text-lg text-white">EcoYugam</a>
+              <p class="text-xs text-slate-400">Transforming India's Environmental Future</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400 mb-4">Connecting government, communities and technology for a cleaner tomorrow through circular economy innovation.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center hover:bg-emerald-600 transition-colors">
+              <i class="fab fa-twitter text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center hover:bg-emerald-600 transition-colors">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center hover:bg-emerald-600 transition-colors">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center hover:bg-emerald-600 transition-colors">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-white mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="{{ url_for('index') }}" class="text-slate-400 hover:text-white transition-colors">Home</a></li>
+            <li><a href="{{ url_for('about') }}" class="text-slate-400 hover:text-white transition-colors">About Us</a></li>
+            <li><a href="{{ url_for('programs') }}" class="text-slate-400 hover:text-white transition-colors">Programs</a></li>
+            <li><a href="{{ url_for('contact') }}" class="text-slate-400 hover:text-white transition-colors">Contact</a></li>
+            <li><a href="#get-involved" class="text-slate-400 hover:text-white transition-colors">Get Involved</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-white mb-4">Programs</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Smart Bin Initiative</a></li>
+            <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Community Composting</a></li>
+            <li><a href="#" class="text-slate-400 hover:text-white transition-colors">E-Waste to Resources</a></li>
+            <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Water Body Restoration</a></li>
+            <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Plastic Recycling</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-white mb-4">Contact Us</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-emerald-400 mt-1 mr-3"></i>
+              <span class="text-slate-400">Sri Sai Feather 'n' Splash, Plot No. 142 & 143, Swimming Pool Road, Gopal Nagar, Anshi Enclave, K P H B Phase 9, Kukatpally, Hyderabad, Telangana 500085</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone text-emerald-400 mt-1 mr-3"></i>
+              <span class="text-slate-400">+91 6304746286</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope text-emerald-400 mt-1 mr-3"></i>
+              <span class="text-slate-400">contact@ecoyugam.org</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-slate-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div>
+          <p class="text-sm text-slate-400">© <span id="year"></span> EcoYugam. All rights reserved.</p>
+        </div>
+        <div class="text-sm text-slate-400 mt-2 md:mt-0">Built for sustainability and collaboration.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-emerald-600 text-white shadow-lg hover:bg-emerald-700 transition-colors opacity-0 invisible transition-all duration-300 z-40">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Form validation
+    const contactForm = document.getElementById('contact-form');
+    
+    contactForm.addEventListener('submit', function(e) {
+      // Reset previous errors
+      const errorMessages = document.querySelectorAll('.error-message');
+      errorMessages.forEach(msg => {
+        msg.style.display = 'none';
+      });
+      
+      const inputs = document.querySelectorAll('.form-input, select');
+      inputs.forEach(input => {
+        input.classList.remove('input-error');
+      });
+      
+      // Validate form
+      let isValid = true;
+      
+      // Name validation
+      const name = document.getElementById('name');
+      if (!name.value.trim()) {
+        document.getElementById('name-error').style.display = 'block';
+        name.classList.add('input-error');
+        isValid = false;
+      }
+      
+      // Email validation
+      const email = document.getElementById('email');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email.value.trim() || !emailRegex.test(email.value)) {
+        document.getElementById('email-error').style.display = 'block';
+        email.classList.add('input-error');
+        isValid = false;
+      }
+      
+      // Inquiry type validation
+      const inquiryType = document.getElementById('inquiry-type');
+      if (!inquiryType.value) {
+        document.getElementById('inquiry-type-error').style.display = 'block';
+        inquiryType.classList.add('input-error');
+        isValid = false;
+      }
+      
+      // Message validation
+      const message = document.getElementById('message');
+      if (!message.value.trim()) {
+        document.getElementById('message-error').style.display = 'block';
+        message.classList.add('input-error');
+        isValid = false;
+      }
+      
+      // If form is not valid, prevent submission
+      if (!isValid) {
+        e.preventDefault();
+      }
+    });
+
+    // Scroll to section
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+  </script>
+</body>
+</html>

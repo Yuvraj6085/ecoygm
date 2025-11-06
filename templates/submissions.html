@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submissions | EcoYugam Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+  <header class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold">EY</div>
+          <div>
+            <h1 class="text-lg font-semibold">EcoYugam Admin</h1>
+            <p class="text-xs text-slate-500">Contact Submissions</p>
+          </div>
+        </div>
+        <nav>
+          <a href="{{ url_for('index') }}" class="text-sm text-slate-600 hover:text-emerald-600 mr-4">
+            <i class="fas fa-home mr-1"></i> Back to Site
+          </a>
+          <a href="{{ url_for('logout') }}" class="text-sm text-red-600 hover:text-red-700">
+            <i class="fas fa-sign-out-alt mr-1"></i> Logout
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold mb-8">Contact Form Submissions</h1>
+
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-left text-slate-500">
+            <thead class="text-xs text-slate-700 uppercase bg-slate-50">
+              <tr>
+                <th class="px-6 py-3">Date</th>
+                <th class="px-6 py-3">Name</th>
+                <th class="px-6 py-3">Email</th>
+                <th class="px-6 py-3">Organization</th>
+                <th class="px-6 py-3">Involvement Type</th>
+                <th class="px-6 py-3">Message</th>
+                <th class="px-6 py-3">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for submission in submissions %}
+              <tr class="bg-white border-b hover:bg-slate-50">
+                <td class="px-6 py-4">{{ submission.submission_date.strftime('%Y-%m-%d %H:%M') }}</td>
+                <td class="px-6 py-4 font-medium text-slate-900">{{ submission.name }}</td>
+                <td class="px-6 py-4">{{ submission.email }}</td>
+                <td class="px-6 py-4">{{ submission.organization or 'N/A' }}</td>
+                <td class="px-6 py-4">{{ submission.involvement_type }}</td>
+                <td class="px-6 py-4 max-w-xs truncate" title="{{ submission.message }}">{{ submission.message or 'N/A' }}</td>
+                <td class="px-6 py-4">
+                  <span class="px-2 py-1 rounded-full text-xs font-medium {% if submission.status == 'New' %}bg-blue-100 text-blue-800{% else %}bg-green-100 text-green-800{% endif %}">
+                    {{ submission.status }}
+                  </span>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

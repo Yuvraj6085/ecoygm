@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Waste to Resources | EcoYugam</title>
+  <meta name="description" content="EcoYugam's E-Waste to Resources program - Transforming electronic waste into valuable materials through safe, efficient recycling and resource recovery." />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .gradient-text {
+      background: linear-gradient(90deg, #16a34a, #0d9488, #0ea5e9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      animation: gradient 3s ease infinite;
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .floating-animation {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translate(0, 0px); }
+      50% { transform: translate(0, -10px); }
+      100% { transform: translate(0, 0px); }
+    }
+    
+    .pill-shadow { 
+      box-shadow: 0 6px 18px rgba(15,23,42,0.07); 
+    }
+    
+    .glow {
+      box-shadow: 0 0 15px rgba(22, 163, 74, 0.3);
+    }
+    
+    .process-card {
+      transition: all 0.3s ease;
+    }
+    
+    .process-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .material-flow {
+      background: linear-gradient(135deg, #16a34a, #0d9488, #0ea5e9);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .pulse-dot {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .resource-card {
+      transition: all 0.3s ease;
+    }
+    
+    .resource-card:hover {
+      transform: scale(1.05);
+    }
+    
+    .e-waste-visual {
+      position: relative;
+      background: linear-gradient(135deg, #1e293b, #334155);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .recycling-animation {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #16a34a, transparent);
+      animation: recycling 3s linear infinite;
+    }
+    
+    @keyframes recycling {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    .stats-counter {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-800 bg-white">
+  <!-- Header -->
+  <header class="bg-white sticky top-0 z-50 border-b transition-all duration-300" id="header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold floating-animation">EY</div>
+          <div>
+            <a href="index.html" class="text-lg font-semibold">EcoYugam</a>
+            <p class="text-xs text-slate-500">E-Waste to Resources</p>
+          </div>
+        </div>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="index.html" class="hover:text-emerald-600 transition-colors">Home</a>
+          <a href="about.html" class="hover:text-emerald-600 transition-colors">About</a>
+          <a href="programs.html" class="hover:text-emerald-600 transition-colors">Programs</a>
+          <a href="services.html" class="hover:text-emerald-600 transition-colors">Services</a>
+          <a href="impact.html" class="hover:text-emerald-600 transition-colors">Impact</a>
+          <a href="contact.html" class="hover:text-emerald-600 transition-colors">Contact</a>
+        </nav>
+        <div class="md:hidden">
+          <button id="menuBtn" class="p-2 rounded hover:bg-slate-100 transition-colors">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden border-t md:hidden bg-white">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="index.html" class="py-2 hover:text-emerald-600 transition-colors">Home</a>
+        <a href="about.html" class="py-2 hover:text-emerald-600 transition-colors">About</a>
+        <a href="programs.html" class="py-2 hover:text-emerald-600 transition-colors">Programs</a>
+        <a href="services.html" class="py-2 hover:text-emerald-600 transition-colors">Services</a>
+        <a href="impact.html" class="py-2 hover:text-emerald-600 transition-colors">Impact</a>
+        <a href="contact.html" class="py-2 hover:text-emerald-600 transition-colors">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-20 bg-gradient-to-br from-emerald-50 via-cyan-50 to-sky-50 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-emerald-200 floating-animation"></div>
+      <div class="absolute top-40 right-20 w-16 h-16 rounded-full bg-cyan-200 floating-animation" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-20 left-1/4 w-24 h-24 rounded-full bg-emerald-100 floating-animation" style="animation-delay: 2s;"></div>
+      <div class="absolute top-1/2 left-1/2 w-32 h-32 rounded-full bg-sky-100 floating-animation" style="animation-delay: 1.5s;"></div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <h1 class="text-4xl sm:text-6xl font-extrabold mb-6">
+            E-Waste to <span class="gradient-text">Resources</span>
+          </h1>
+          <p class="text-xl text-slate-600 mb-8">
+            Transforming India's electronic waste into valuable resources through advanced recycling, safe processing, and circular economy innovation.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#how-it-works" class="px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors glow">
+              How It Works <i class="fas fa-arrow-down ml-2"></i>
+            </a>
+            <a href="#recycle-now" class="px-6 py-3 border border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-colors">
+              Recycle Now <i class="fas fa-recycle ml-2"></i>
+            </a>
+          </div>
+        </div>
+        <div data-aos="fade-left" data-aos-delay="200">
+          <div class="material-flow p-8 text-white text-center">
+            <div class="mb-6">
+              <i class="fas fa-laptop-code text-6xl mb-4"></i>
+              <h3 class="text-2xl font-bold">Resource Recovery Process</h3>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+              <div class="bg-white/20 rounded-xl p-4">
+                <p class="text-2xl font-bold">92%</p>
+                <p class="text-sm">Material Recovery Rate</p>
+              </div>
+              <div class="bg-white/20 rounded-xl p-4">
+                <p class="text-2xl font-bold">18+</p>
+                <p class="text-sm">Materials Extracted</p>
+              </div>
+              <div class="bg-white/20 rounded-xl p-4">
+                <p class="text-2xl font-bold">100%</p>
+                <p class="text-sm">Safe Processing</p>
+              </div>
+            </div>
+            <div class="bg-white/20 rounded-xl p-4 relative">
+              <div class="recycling-animation"></div>
+              <p class="font-bold mb-2">Current Processing Status</p>
+              <div class="flex justify-between text-sm">
+                <span>Collection</span>
+                <span>Dismantling</span>
+                <span>Separation</span>
+                <span>Recovery</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- E-Waste Problem -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <h2 class="text-3xl font-bold mb-6">India's E-Waste Challenge</h2>
+          <p class="text-slate-600 mb-6">
+            India is the third-largest generator of e-waste globally, with over 3.2 million tonnes produced annually. Only 10% of this waste is processed through formal channels, leading to:
+          </p>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start">
+              <i class="fas fa-exclamation-triangle text-amber-500 mt-1 mr-3"></i>
+              <span><strong>Environmental Pollution:</strong> Toxic materials leaching into soil and water</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-exclamation-triangle text-amber-500 mt-1 mr-3"></i>
+              <span><strong>Health Hazards:</strong> Informal recycling exposes workers to dangerous substances</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-exclamation-triangle text-amber-500 mt-1 mr-3"></i>
+              <span><strong>Resource Loss:</strong> Valuable materials worth ₹4,500+ Cr lost annually</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-exclamation-triangle text-amber-500 mt-1 mr-3"></i>
+              <span><strong>Data Security Risks:</strong> Improper disposal compromises personal information</span>
+            </li>
+          </ul>
+          <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg">
+            <p class="text-amber-800 font-semibold">E-waste is growing at 31% annually in India - one of the fastest rates in the world</p>
+          </div>
+        </div>
+        <div data-aos="fade-left" data-aos-delay="200">
+          <div class="e-waste-visual p-6 text-white">
+            <h3 class="text-xl font-bold mb-4 text-center">Common E-Waste Items</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-slate-700/50 rounded-lg p-4 text-center">
+                <i class="fas fa-mobile-alt text-3xl mb-2"></i>
+                <p class="text-sm">Mobile Phones</p>
+              </div>
+              <div class="bg-slate-700/50 rounded-lg p-4 text-center">
+                <i class="fas fa-laptop text-3xl mb-2"></i>
+                <p class="text-sm">Laptops</p>
+              </div>
+              <div class="bg-slate-700/50 rounded-lg p-4 text-center">
+                <i class="fas fa-tv text-3xl mb-2"></i>
+                <p class="text-sm">Televisions</p>
+              </div>
+              <div class="bg-slate-700/50 rounded-lg p-4 text-center">
+                <i class="fas fa-print text-3xl mb-2"></i>
+                <p class="text-sm">Printers</p>
+              </div>
+            </div>
+            <div class="mt-6 bg-slate-800/70 rounded-lg p-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm">Annual E-Waste Generation</span>
+                <span class="font-bold">3.2M tonnes</span>
+              </div>
+              <div class="w-full bg-slate-700 rounded-full h-2">
+                <div class="bg-amber-500 h-2 rounded-full" style="width: 85%"></div>
+              </div>
+              <p class="text-xs text-slate-300 mt-2">Projected to reach 5.2M tonnes by 2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Our E-Waste Recycling Process</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">A comprehensive, safe, and efficient approach to transforming e-waste into valuable resources.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="process-card bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+            <span class="text-emerald-600 font-bold text-xl">1</span>
+          </div>
+          <h3 class="text-xl font-bold text-emerald-700 mb-3">Collection & Transport</h3>
+          <p class="text-slate-600">Secure collection from homes, businesses, and institutions through our certified logistics network.</p>
+          <div class="mt-4 flex justify-center">
+            <i class="fas fa-truck text-emerald-500 text-xl"></i>
+          </div>
+        </div>
+        
+        <div class="process-card bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
+            <span class="text-blue-600 font-bold text-xl">2</span>
+          </div>
+          <h3 class="text-xl font-bold text-blue-700 mb-3">Safe Dismantling</h3>
+          <p class="text-slate-600">Manual disassembly in controlled environments to separate components and remove hazardous materials.</p>
+          <div class="mt-4 flex justify-center">
+            <i class="fas fa-tools text-blue-500 text-xl"></i>
+          </div>
+        </div>
+        
+        <div class="process-card bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-4">
+            <span class="text-amber-600 font-bold text-xl">3</span>
+          </div>
+          <h3 class="text-xl font-bold text-amber-700 mb-3">Material Separation</h3>
+          <p class="text-slate-600">Advanced mechanical and chemical processes to separate plastics, metals, glass, and precious materials.</p>
+          <div class="mt-4 flex justify-center">
+            <i class="fas fa-filter text-amber-500 text-xl"></i>
+          </div>
+        </div>
+        
+        <div class="process-card bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
+            <span class="text-purple-600 font-bold text-xl">4</span>
+          </div>
+          <h3 class="text-xl font-bold text-purple-700 mb-3">Resource Recovery</h3>
+          <p class="text-slate-600">Extraction and purification of valuable materials for reuse in manufacturing and other industries.</p>
+          <div class="mt-4 flex justify-center">
+            <i class="fas fa-industry text-purple-500 text-xl"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 bg-white rounded-xl p-8 pill-shadow" data-aos="fade-up">
+        <h3 class="text-2xl font-bold text-center mb-8">Advanced Processing Technologies</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="bg-emerald-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-robot text-emerald-600 text-3xl"></i>
+            </div>
+            <h4 class="font-bold text-lg mb-2">Automated Sorting</h4>
+            <p class="text-slate-600 text-sm">AI-powered robots identify and separate different material types with 99% accuracy</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-vial text-blue-600 text-3xl"></i>
+            </div>
+            <h4 class="font-bold text-lg mb-2">Hydrometallurgy</h4>
+            <p class="text-slate-600 text-sm">Chemical processes extract precious metals with minimal environmental impact</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-shield-alt text-purple-600 text-3xl"></i>
+            </div>
+            <h4 class="font-bold text-lg mb-2">Data Security</h4>
+            <p class="text-slate-600 text-sm">Certified data destruction ensures complete privacy protection for all devices</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recovered Resources -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Valuable Resources Recovered</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">Electronic waste contains numerous valuable materials that can be recovered and reintroduced into the manufacturing cycle.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="resource-card bg-amber-50 rounded-xl p-6 text-center" data-aos="zoom-in" data-aos-delay="0">
+          <i class="fas fa-gem text-amber-600 text-4xl mb-4"></i>
+          <h4 class="font-bold text-slate-800">Precious Metals</h4>
+          <p class="text-slate-600 text-sm mt-2">Gold, silver, platinum, palladium</p>
+          <div class="mt-4 text-amber-700 font-bold">From 1 tonne of mobile phones</div>
+        </div>
+        
+        <div class="resource-card bg-slate-100 rounded-xl p-6 text-center" data-aos="zoom-in" data-aos-delay="100">
+          <i class="fas fa-cube text-slate-600 text-4xl mb-4"></i>
+          <h4 class="font-bold text-slate-800">Base Metals</h4>
+          <p class="text-slate-600 text-sm mt-2">Copper, aluminum, steel, tin</p>
+          <div class="mt-4 text-slate-700 font-bold">Up to 60% recovery rate</div>
+        </div>
+        
+        <div class="resource-card bg-blue-50 rounded-xl p-6 text-center" data-aos="zoom-in" data-aos-delay="200">
+          <i class="fas fa-vial text-blue-600 text-4xl mb-4"></i>
+          <h4 class="font-bold text-slate-800">Rare Earth Elements</h4>
+          <p class="text-slate-600 text-sm mt-2">Neodymium, dysprosium, praseodymium</p>
+          <div class="mt-4 text-blue-700 font-bold">Critical for electronics</div>
+        </div>
+        
+        <div class="resource-card bg-emerald-50 rounded-xl p-6 text-center" data-aos="zoom-in" data-aos-delay="300">
+          <i class="fas fa-recycle text-emerald-600 text-4xl mb-4"></i>
+          <h4 class="font-bold text-slate-800">Plastics & Glass</h4>
+          <p class="text-slate-600 text-sm mt-2">ABS, polycarbonate, panel glass</p>
+          <div class="mt-4 text-emerald-700 font-bold">30+ types processed</div>
+        </div>
+      </div>
+
+      <div class="mt-12 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl p-8 text-white" data-aos="fade-up">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">Resource Recovery Dashboard</h3>
+            <p class="text-emerald-100 mb-6">Our advanced tracking system monitors material recovery in real-time, ensuring maximum value extraction from every device processed.</p>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>Gold Recovery</span>
+                  <span class="font-bold">95%</span>
+                </div>
+                <div class="w-full bg-white/20 rounded-full h-2">
+                  <div class="bg-amber-400 h-2 rounded-full" style="width: 95%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>Copper Recovery</span>
+                  <span class="font-bold">88%</span>
+                </div>
+                <div class="w-full bg-white/20 rounded-full h-2">
+                  <div class="bg-amber-600 h-2 rounded-full" style="width: 88%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>Plastic Recycling</span>
+                  <span class="font-bold">76%</span>
+                </div>
+                <div class="w-full bg-white/20 rounded-full h-2">
+                  <div class="bg-emerald-400 h-2 rounded-full" style="width: 76%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white/10 rounded-lg p-6">
+            <h4 class="font-bold mb-4 text-center">Value Recovery from 1,000 Mobile Phones</h4>
+            <div class="space-y-3">
+              <div class="flex justify-between">
+                <span>Gold</span>
+                <span class="font-bold">340g (₹1.7L)</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Silver</span>
+                <span class="font-bold">3.5kg (₹2.8L)</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Copper</span>
+                <span class="font-bold">15kg (₹12K)</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Palladium</span>
+                <span class="font-bold">140g (₹85K)</span>
+              </div>
+              <div class="border-t border-white/20 pt-2 mt-2">
+                <div class="flex justify-between font-bold">
+                  <span>Total Value</span>
+                  <span>~₹5.5L</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact & Benefits -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Environmental & Economic Impact</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">Our E-Waste to Resources program delivers measurable benefits across multiple dimensions.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="0">
+          <div class="text-3xl font-bold text-emerald-600 mb-2 stats-counter" data-count="1250">1,250</div>
+          <p class="text-slate-600 font-medium">Tonnes Processed</p>
+          <div class="mt-4 text-sm text-slate-500">Since program inception</div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-3xl font-bold text-blue-600 mb-2 stats-counter" data-count="185">185</div>
+          <p class="text-slate-600 font-medium">Green Jobs Created</p>
+          <div class="mt-4 text-sm text-slate-500">In formal recycling sector</div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-3xl font-bold text-amber-600 mb-2 stats-counter" data-count="4200">4,200</div>
+          <p class="text-slate-600 font-medium">CO₂ Reduction (tons)</p>
+          <div class="mt-4 text-sm text-slate-500">Compared to virgin material extraction</div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="300">
+          <div class="text-3xl font-bold text-purple-600 mb-2 stats-counter" data-count="28">28</div>
+          <p class="text-slate-600 font-medium">Corporate Partners</p>
+          <div class="mt-4 text-sm text-slate-500">EPR compliance management</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div data-aos="fade-right">
+          <h3 class="text-2xl font-bold mb-6">Environmental Benefits</h3>
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-leaf text-emerald-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Toxin Prevention</h4>
+                <p class="text-slate-600 text-sm mt-1">Safe handling of lead, mercury, and other hazardous materials prevents soil and water contamination.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-tint text-blue-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Resource Conservation</h4>
+                <p class="text-slate-600 text-sm mt-1">Recovered materials reduce the need for environmentally destructive mining operations.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-bolt text-amber-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Energy Efficiency</h4>
+                <p class="text-slate-600 text-sm mt-1">Recycling uses significantly less energy than extracting and processing virgin materials.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div data-aos="fade-left" data-aos-delay="200">
+          <h3 class="text-2xl font-bold mb-6">Economic & Social Benefits</h3>
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-rupee-sign text-purple-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Value Creation</h4>
+                <p class="text-slate-600 text-sm mt-1">Recovered materials create economic value worth crores of rupees annually.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-briefcase text-cyan-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Formal Employment</h4>
+                <p class="text-slate-600 text-sm mt-1">Creates safe, regulated jobs in the formal recycling sector with proper training.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-shield-alt text-rose-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Data Security</h4>
+                <p class="text-slate-600 text-sm mt-1">Certified data destruction protects individuals and organizations from security breaches.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recycle Now -->
+  <section id="recycle-now" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Recycle Your E-Waste</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">Join thousands of responsible individuals and organizations in properly disposing of electronic waste.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div data-aos="fade-right">
+          <h3 class="text-2xl font-bold mb-6">How to Recycle with EcoYugam</h3>
+          
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-mobile-alt text-emerald-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Schedule Pickup</h4>
+                <p class="text-slate-600 text-sm mt-1">Use our app, website, or helpline to schedule a convenient pickup time.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-box text-blue-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Prepare Devices</h4>
+                <p class="text-slate-600 text-sm mt-1">Back up your data and remove any personal information from devices.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-truck text-amber-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Secure Collection</h4>
+                <p class="text-slate-600 text-sm mt-1">Our certified team collects devices with proper documentation and tracking.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-certificate text-purple-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Receive Certificate</h4>
+                <p class="text-slate-600 text-sm mt-1">Get a recycling certificate for your records and compliance requirements.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8 bg-emerald-50 rounded-xl p-6">
+            <h4 class="font-bold text-emerald-800 mb-2">Accepted E-Waste Items</h4>
+            <div class="grid grid-cols-2 gap-2 text-sm">
+              <div class="flex items-center">
+                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                <span>Mobile phones & tablets</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                <span>Laptops & computers</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                <span>Televisions & monitors</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                <span>Printers & scanners</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                <span>Home appliances</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check text-emerald-500 mr-2"></i>
+                <span>Networking equipment</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div data-aos="fade-left" data-aos-delay="200">
+          <div class="bg-slate-50 rounded-xl p-8">
+            <h3 class="text-2xl font-bold mb-6">Schedule E-Waste Pickup</h3>
+            <form class="space-y-6">
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
+                <input type="text" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+                <input type="email" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-2">Phone Number</label>
+                <input type="tel" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-2">E-Waste Type</label>
+                <select class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                  <option>Select e-waste type</option>
+                  <option>Mobile phones & tablets</option>
+                  <option>Laptops & computers</option>
+                  <option>Televisions & monitors</option>
+                  <option>Printers & scanners</option>
+                  <option>Home appliances</option>
+                  <option>Mixed e-waste</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-2">Approximate Quantity</label>
+                <select class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                  <option>Select quantity</option>
+                  <option>1-5 items</option>
+                  <option>6-10 items</option>
+                  <option>11-20 items</option>
+                  <option>21-50 items</option>
+                  <option>50+ items (Business)</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-2">Pickup Address</label>
+                <textarea rows="3" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+              </div>
+              
+              <button type="submit" class="w-full py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors">
+                Schedule Pickup
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t py-12 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold">EY</div>
+            <div>
+              <a href="index.html" class="font-bold text-lg text-emerald-600">EcoYugam</a>
+              <p class="text-xs text-slate-500">E-Waste to Resources</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-600 mb-4">Transforming India's electronic waste into valuable resources through advanced recycling and circular economy principles.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-twitter text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Home</a></li>
+            <li><a href="about.html" class="text-slate-600 hover:text-emerald-600 transition-colors">About</a></li>
+            <li><a href="programs.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Programs</a></li>
+            <li><a href="services.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Services</a></li>
+            <li><a href="impact.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Impact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">E-Waste Resources</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">What is E-Waste?</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">EPR Compliance</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Data Security</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Corporate Programs</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Educational Materials</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">Contact Us</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">123 Green Avenue, Eco Park, New Delhi, India 110001</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">+91 11 2345 6789</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">ewaste@ecoyugam.org</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div>
+          <p class="text-sm text-slate-600">© <span id="year"></span> EcoYugam. All rights reserved.</p>
+        </div>
+        <div class="text-sm text-slate-600 mt-2 md:mt-0">Transforming e-waste into resources for a sustainable future</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-emerald-600 text-white shadow-lg hover:bg-emerald-700 transition-colors opacity-0 invisible transition-all duration-300 z-40">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Animated counters
+    const counters = document.querySelectorAll('.stats-counter');
+    const speed = 200;
+    
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-count');
+        const count = +counter.innerText.replace(',', '');
+        const increment = target / speed;
+        
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment).toLocaleString();
+          setTimeout(animateCounters, 1);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      });
+    };
+    
+    // Start counters when section is in view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    observer.observe(document.getElementById('how-it-works'));
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+  </script>
+</body>
+</html>

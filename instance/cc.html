@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Composting | EcoYugam</title>
+  <meta name="description" content="Learn about EcoYugam's Community Composting program - transforming organic waste into valuable resources while empowering local communities across India.">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --green: #16a34a;
+      --blue: #0369a1;
+      --yellow: #f59e0b;
+      --red: #ef4444;
+    }
+    
+    .hero-bg { 
+      background-image: linear-gradient(180deg, rgba(6,95,70,0.06), rgba(255,255,255,0.0)); 
+    }
+    
+    .pill-shadow { 
+      box-shadow: 0 6px 18px rgba(15,23,42,0.07); 
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, #16a34a, #0d9488);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .floating-animation {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translate(0, 0px); }
+      50% { transform: translate(0, -10px); }
+      100% { transform: translate(0, 0px); }
+    }
+    
+    .glow {
+      box-shadow: 0 0 15px rgba(22, 163, 74, 0.3);
+    }
+    
+    .tab-active {
+      border-bottom: 3px solid #16a34a;
+      color: #16a34a;
+    }
+    
+    .compost-timeline {
+      position: relative;
+    }
+    
+    .compost-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 20px;
+      width: 4px;
+      background: #16a34a;
+      border-radius: 2px;
+    }
+    
+    @media (min-width: 768px) {
+      .compost-timeline::before {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    
+    .compost-step {
+      position: relative;
+    }
+    
+    .compost-step::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 12px;
+      width: 20px;
+      height: 20px;
+      background: #16a34a;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    @media (min-width: 768px) {
+      .compost-step:nth-child(odd)::before {
+        left: calc(50% - 10px);
+      }
+      
+      .compost-step:nth-child(even)::before {
+        left: calc(50% - 10px);
+      }
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-800 bg-white">
+  <!-- Header -->
+  <header class="bg-white sticky top-0 z-50 border-b transition-all duration-300" id="header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold floating-animation">EY</div>
+          <div>
+            <a href="index.html" class="text-lg font-semibold">EcoYugam</a>
+            <p class="text-xs text-slate-500">Transforming India's Environmental Future</p>
+          </div>
+        </div>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="index.html" class="hover:text-emerald-600 transition-colors">Home</a>
+          <a href="services.html" class="hover:text-emerald-600 transition-colors">Service</a>
+          <a href="vision.html" class="hover:text-emerald-600 transition-colors">Vision</a>
+          <a href="about.html" class="hover:text-emerald-600 transition-colors">About Us</a>
+          <a href="contact.html" class="text-white bg-emerald-600 px-3 py-2 rounded shadow-sm hover:bg-emerald-700 transition-colors glow">Contact</a>
+        </nav>
+        <div class="md:hidden">
+          <button id="menuBtn" class="p-2 rounded hover:bg-slate-100 transition-colors">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden border-t md:hidden bg-white">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="index.html" class="py-2 hover:text-emerald-600 transition-colors">Home</a>
+        <a href="services.html" class="py-2 hover:text-emerald-600 transition-colors">Service</a>
+        <a href="vision.html" class="py-2 hover:text-emerald-600 transition-colors">Vision</a>
+        <a href="about.html" class="py-2 hover:text-emerald-600 transition-colors">About Us</a>
+        <a href="contact.html" class="text-white bg-emerald-600 px-3 py-2 rounded shadow-sm hover:bg-emerald-700 transition-colors glow">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-bg pt-12 pb-20 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-emerald-50/30 to-amber-50/30 z-0"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div data-aos="fade-right" data-aos-duration="800">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="px-3 py-1 bg-amber-100 text-amber-800 text-sm rounded-full">Rural Initiative</span>
+              <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Environmental Program</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
+              Community Composting 
+              <span class="gradient-text">Transforming Organic Waste into Resources</span>
+            </h1>
+            <p class="mt-4 text-slate-700 max-w-2xl text-lg">
+              EcoYugam's Community Composting program transforms organic waste into nutrient-rich compost for local agriculture, reducing landfill burden and chemical fertilizer use while creating sustainable livelihoods.
+            </p>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#get-involved" class="inline-flex items-center px-6 py-3 rounded-md bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors glow">
+                Start a Program <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+              <a href="#how-it-works" class="inline-flex items-center px-6 py-3 rounded-md border text-slate-700 hover:bg-slate-50 transition-colors">
+                How It Works <i class="fas fa-search ml-2"></i>
+              </a>
+            </div>
+
+            <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-slate-600">
+              <div class="p-4 bg-emerald-50 rounded-lg text-center hover:shadow-md transition-shadow">
+                <div class="text-2xl font-bold text-emerald-600">60%</div>
+                <div>Organic waste diverted</div>
+              </div>
+              <div class="p-4 bg-amber-50 rounded-lg text-center hover:shadow-md transition-shadow">
+                <div class="text-2xl font-bold text-amber-600">2,450</div>
+                <div>tons compost produced</div>
+              </div>
+              <div class="p-4 bg-sky-50 rounded-lg text-center hover:shadow-md transition-shadow">
+                <div class="text-2xl font-bold text-sky-600">185</div>
+                <div>communities engaged</div>
+              </div>
+              <div class="p-4 bg-rose-50 rounded-lg text-center hover:shadow-md transition-shadow">
+                <div class="text-2xl font-bold text-rose-600">320</div>
+                <div>green jobs created</div>
+              </div>
+            </div>
+          </div>
+
+          <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+            <div class="bg-white rounded-2xl p-5 pill-shadow hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+              <div class="relative rounded-md overflow-hidden mb-4">
+                <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&w=900&q=60" alt="Community Composting" class="w-full object-cover h-60 transition-transform duration-500 hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-4">
+                  <span class="text-white text-sm font-medium">Community Composting in Action</span>
+                </div>
+              </div>
+              
+              <h3 class="font-semibold text-lg mb-2">Program Highlights</h3>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="p-3 rounded-lg border-l-4 border-green-500 bg-green-50 hover:bg-green-100 transition-colors">
+                  <strong>Waste Reduction</strong>
+                  <p class="text-xs text-slate-500">60-70% landfill diversion</p>
+                </div>
+                <div class="p-3 rounded-lg border-l-4 border-amber-500 bg-amber-50 hover:bg-amber-100 transition-colors">
+                  <strong>Soil Health</strong>
+                  <p class="text-xs text-slate-500">Nutrient-rich compost</p>
+                </div>
+                <div class="p-3 rounded-lg border-l-4 border-blue-500 bg-blue-50 hover:bg-blue-100 transition-colors">
+                  <strong>Community</strong>
+                  <p class="text-xs text-slate-500">Local empowerment</p>
+                </div>
+                <div class="p-3 rounded-lg border-l-4 border-red-500 bg-red-50 hover:bg-red-100 transition-colors">
+                  <strong>Economic</strong>
+                  <p class="text-xs text-slate-500">Revenue generation</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+          <h2 class="text-3xl font-bold">How Community Composting Works</h2>
+          <p class="mt-4 text-slate-600 max-w-3xl mx-auto">Our community composting model follows a simple yet effective process that transforms organic waste into valuable resources while engaging and empowering local communities.</p>
+        </div>
+
+        <div class="compost-timeline space-y-12">
+          <!-- Step 1 -->
+          <div class="compost-step grid grid-cols-1 md:grid-cols-2 gap-6 items-center" data-aos="fade-up">
+            <div class="md:pr-12">
+              <div class="bg-amber-100 text-amber-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                <span class="font-bold">1</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Waste Collection</h3>
+              <p class="text-slate-600">Community members segregate organic waste at source. Our trained local collectors gather the waste from households, markets, and food establishments using eco-friendly collection methods.</p>
+              <ul class="mt-4 text-sm text-slate-600 space-y-1">
+                <li><i class="fas fa-check text-amber-500 mr-2"></i> Door-to-door collection system</li>
+                <li><i class="fas fa-check text-amber-500 mr-2"></i> Community drop-off points</li>
+                <li><i class="fas fa-check text-amber-500 mr-2"></i> Market waste aggregation</li>
+              </ul>
+            </div>
+            <div class="rounded-lg overflow-hidden shadow-md">
+              <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=60" alt="Waste Collection" class="w-full h-64 object-cover">
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="compost-step grid grid-cols-1 md:grid-cols-2 gap-6 items-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="md:order-2 md:pl-12">
+              <div class="bg-amber-100 text-amber-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                <span class="font-bold">2</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Processing & Composting</h3>
+              <p class="text-slate-600">Collected organic waste is processed at local composting facilities using appropriate technology - from simple windrow composting to more advanced in-vessel systems depending on scale and location.</p>
+              <ul class="mt-4 text-sm text-slate-600 space-y-1">
+                <li><i class="fas fa-check text-amber-500 mr-2"></i> Windrow composting method</li>
+                <li><i class="fas fa-check text-amber-500 mr-2"></i> Vermicomposting options</li>
+                <li><i class="fas fa-check text-amber-500 mr-2"></i> Quality control measures</li>
+              </ul>
+            </div>
+            <div class="md:order-1 rounded-lg overflow-hidden shadow-md">
+              <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=60" alt="Compost Processing" class="w-full h-64 object-cover">
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="compost-step grid grid-cols-1 md:grid-cols-2 gap-6 items-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="md:pr-12">
+              <div class="bg-amber-100 text-amber-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                <span class="font-bold">3</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Quality Testing & Packaging</h3>
+              <p class="text-slate-600">The finished compost undergoes quality testing to ensure it meets agricultural standards. It is then packaged appropriately for distribution and sale, with branding that highlights its community origins.</p>
+              <ul class="mt-4 text-sm text-slate-600 space-y-1">
+                <li><i class="fas fa-check text-amber-500 mr-2"></i> Nutrient content analysis</li>
+                <li><i class="fas fa-check text-amber-500 mr-2"></i> Pathogen-free certification</li>
+                <li><i class="fas fa-check text-amber-500 mr-2"></i> Sustainable packaging</li>
+              </ul>
+            </div>
+            <div class="rounded-lg overflow-hidden shadow-md">
+              <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=60" alt="Compost Packaging" class="w-full h-64 object-cover">
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="compost-step grid grid-cols-1 md:grid-cols-2 gap-6 items-center" data-aos="fade-up" data-aos-delay="300">
+            <div class="md:order-2 md:pl-12">
+              <div class="bg-amber-100 text-amber-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                <span class="font-bold">4</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Distribution & Community Benefits</h3>
+              <p class="text-slate-600">The high-quality compost is distributed to local farmers, gardeners, and agricultural projects. Revenue generated is reinvested into the community, creating a sustainable circular economy model.</p>
+              <ul class="mt-4 text-sm text-slate-600 space-y-1">
+                <li><i class="fas fa-check text-amber-500 mr-2"></i> Local agricultural use</li>
+                <li><i class="fas fa-check text-amber-500 mr-2"></i> Community revenue sharing</li>
+                <li><i class="fas fa-check text-amber-500 mr-2"></i> Continuous improvement</li>
+              </ul>
+            </div>
+            <div class="md:order-1 rounded-lg overflow-hidden shadow-md">
+              <img src="https://images.unsplash.com/photo-1621344040748-9c3034d127d7?auto=format&fit=crop&w=600&q=60" alt="Compost Distribution" class="w-full h-64 object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 bg-gradient-to-r from-amber-50 to-emerald-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+          <h2 class="text-3xl font-bold">Benefits of Community Composting</h2>
+          <p class="mt-4 text-slate-600">Our community composting program delivers multiple benefits across environmental, economic, and social dimensions.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="0">
+            <div class="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
+              <i class="fas fa-leaf text-emerald-600 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-emerald-800 mb-2">Environmental Benefits</h3>
+            <ul class="mt-4 text-slate-600 space-y-2">
+              <li><i class="fas fa-check text-emerald-500 mr-2"></i> Reduces landfill waste by 60-70%</li>
+              <li><i class="fas fa-check text-emerald-500 mr-2"></i> Lowers methane emissions from landfills</li>
+              <li><i class="fas fa-check text-emerald-500 mr-2"></i> Improves soil health and fertility</li>
+              <li><i class="fas fa-check text-emerald-500 mr-2"></i> Reduces chemical fertilizer usage</li>
+              <li><i class="fas fa-check text-emerald-500 mr-2"></i> Conserves water through better soil retention</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-14 h-14 rounded-full bg-amber-100 flex items-center justify-center mb-4">
+              <i class="fas fa-users text-amber-600 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-amber-800 mb-2">Social Benefits</h3>
+            <ul class="mt-4 text-slate-600 space-y-2">
+              <li><i class="fas fa-check text-amber-500 mr-2"></i> Creates local green jobs</li>
+              <li><i class="fas fa-check text-amber-500 mr-2"></i> Builds community cohesion</li>
+              <li><i class="fas fa-check text-amber-500 mr-2"></i> Increases environmental awareness</li>
+              <li><i class="fas fa-check text-amber-500 mr-2"></i> Improves public health and sanitation</li>
+              <li><i class="fas fa-check text-amber-500 mr-2"></i> Empowers women and marginalized groups</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+              <i class="fas fa-chart-line text-blue-600 text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-blue-800 mb-2">Economic Benefits</h3>
+            <ul class="mt-4 text-slate-600 space-y-2">
+              <li><i class="fas fa-check text-blue-500 mr-2"></i> Generates revenue from compost sales</li>
+              <li><i class="fas fa-check text-blue-500 mr-2"></i> Reduces municipal waste management costs</li>
+              <li><i class="fas fa-check text-blue-500 mr-2"></i> Lowers agricultural input costs for farmers</li>
+              <li><i class="fas fa-check text-blue-500 mr-2"></i> Creates entrepreneurial opportunities</li>
+              <li><i class="fas fa-check text-blue-500 mr-2"></i> Increases crop yields and farmer incomes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12" data-aos="fade-up">
+          <h2 class="text-3xl font-bold">Success Stories</h2>
+          <p class="mt-4 text-slate-600">See how our Community Composting program has made a difference across various regions in India.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="0">
+            <div class="h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1587332066683-5ab96de0e59c?auto=format&fit=crop&w=600&q=60" alt="Rural Village Composting" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-2 py-1 bg-emerald-100 text-emerald-800 text-xs rounded-full">Rural</span>
+                <span class="px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded-full">Maharashtra</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Pune Village Initiative</h3>
+              <p class="text-slate-600 mb-4">A small village near Pune transformed their waste management system, reducing landfill waste by 75% and creating 12 new local jobs through community composting.</p>
+              <div class="flex justify-between items-center text-sm text-slate-500">
+                <span><i class="fas fa-chart-line text-emerald-600 mr-1"></i> 75% waste reduction</span>
+                <span><i class="fas fa-users text-blue-600 mr-1"></i> 12 jobs created</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="100">
+            <div class="h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=60" alt="Urban Composting" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Urban</span>
+                <span class="px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded-full">Karnataka</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Bengaluru Apartment Complex</h3>
+              <p class="text-slate-600 mb-4">A large residential complex in Bengaluru implemented community composting, processing 2 tons of organic waste monthly and using the compost for their lush gardens.</p>
+              <div class="flex justify-between items-center text-sm text-slate-500">
+                <span><i class="fas fa-weight text-amber-600 mr-1"></i> 2 tons/month</span>
+                <span><i class="fas fa-tree text-green-600 mr-1"></i> Garden compost</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="200">
+            <div class="h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1621344040748-9c3034d127d7?auto=format&fit=crop&w=600&q=60" alt="Farmers Using Compost" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Agricultural</span>
+                <span class="px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded-full">Tamil Nadu</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Tamil Nadu Farmer Collective</h3>
+              <p class="text-slate-600 mb-4">A collective of 45 farmers in Tamil Nadu adopted community composting, reducing chemical fertilizer costs by 40% while improving soil health and crop yields.</p>
+              <div class="flex justify-between items-center text-sm text-slate-500">
+                <span><i class="fas fa-seedling text-green-600 mr-1"></i> 45 farmers</span>
+                <span><i class="fas fa-money-bill-wave text-red-600 mr-1"></i> 40% cost reduction</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12" data-aos="fade-up">
+          <a href="#" class="inline-flex items-center px-6 py-3 rounded-md bg-slate-100 text-slate-800 font-medium hover:bg-slate-200 transition-colors">
+            View All Case Studies <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section id="get-involved" class="py-16 bg-emerald-600 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div data-aos="fade-right">
+            <h2 class="text-3xl font-bold mb-4">Start a Community Composting Program</h2>
+            <p class="mb-6 opacity-90">Whether you're part of a residential community, municipality, or organization, we can help you implement a successful community composting program tailored to your needs.</p>
+            
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-home"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Residential Communities</h4>
+                  <p class="opacity-90 text-sm">Apartments, gated communities, and housing societies can reduce waste and create compost for gardens.</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-building"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Municipalities & Local Governments</h4>
+                  <p class="opacity-90 text-sm">Implement city-wide or ward-level composting programs to reduce landfill burden.</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-school"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Educational Institutions</h4>
+                  <p class="opacity-90 text-sm">Schools and colleges can use composting as an educational tool while managing their waste.</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-industry"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Businesses & Organizations</h4>
+                  <p class="opacity-90 text-sm">Offices, restaurants, and other establishments can compost their organic waste.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div data-aos="fade-left" data-aos-delay="200">
+            <div class="bg-white rounded-xl p-6 text-slate-800 shadow-lg">
+              <h3 class="text-xl font-bold mb-4">Start Your Composting Journey</h3>
+              <form class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium mb-1">Name</label>
+                  <input type="text" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium mb-1">Email</label>
+                  <input type="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium mb-1">Organization/Community</label>
+                  <input type="text" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium mb-1">Location</label>
+                  <input type="text" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium mb-1">Estimated Organic Waste (kg/month)</label>
+                  <select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    <option>Select an option</option>
+                    <option>Less than 100 kg</option>
+                    <option>100-500 kg</option>
+                    <option>500-1000 kg</option>
+                    <option>More than 1000 kg</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-medium mb-1">Message/Questions</label>
+                  <textarea rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+                </div>
+                
+                <button type="submit" class="w-full py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors">
+                  Get Started
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t py-12 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold">EY</div>
+            <div>
+              <a href="index.html" class="text-lg font-semibold">EcoYugam</a>
+              <p class="text-xs text-slate-500">Transforming India's Environmental Future</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-600 mb-4">Connecting government, communities and technology for a cleaner tomorrow through circular economy innovation.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-twitter text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html#pillars" class="text-slate-600 hover:text-emerald-600 transition-colors">Our Pillars</a></li>
+            <li><a href="index.html#impact" class="text-slate-600 hover:text-emerald-600 transition-colors">Impact</a></li>
+            <li><a href="index.html#programs" class="text-slate-600 hover:text-emerald-600 transition-colors">Programs</a></li>
+            <li><a href="index.html#testimonials" class="text-slate-600 hover:text-emerald-600 transition-colors">Testimonials</a></li>
+            <li><a href="index.html#get-involved" class="text-slate-600 hover:text-emerald-600 transition-colors">Get Involved</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-4">Programs</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="smart_bin_initiative.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Smart Bin Initiative</a></li>
+            <li><a href="community_composting.html" class="text-emerald-600 font-medium">Community Composting</a></li>
+            <li><a href="e-waste-to-resources.html" class="text-slate-600 hover:text-emerald-600 transition-colors">E-Waste to Resources</a></li>
+            <li><a href="water_body_restoration.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Water Body Restoration</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Plastic Recycling</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-4">Contact Us</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">HITECH-CITY </span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">+91 9876543210</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">contact@ecoyugam.org</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div>
+          <p class="text-sm text-slate-600">© <span id="year"></span> EcoYugam. All rights reserved.</p>
+        </div>
+        <div class="text-sm text-slate-600 mt-2 md:mt-0">Built for Government • Communities • Businesses</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-emerald-600 text-white shadow-lg hover:bg-emerald-700 transition-colors opacity-0 invisible transition-all duration-300 z-40">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Scroll to section
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+  </script>
+</body>
+</html>

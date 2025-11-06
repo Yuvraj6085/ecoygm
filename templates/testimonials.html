@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonials | EcoYugam</title>
+  <meta name="description" content="Hear from our community members, partners, and stakeholders about their experiences with EcoYugam's programs and services." />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .gradient-text {
+      background: linear-gradient(90deg, #16a34a, #0d9488, #0ea5e9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      animation: gradient 3s ease infinite;
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .floating-animation {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translate(0, 0px); }
+      50% { transform: translate(0, -10px); }
+      100% { transform: translate(0, 0px); }
+    }
+    
+    .pill-shadow { 
+      box-shadow: 0 6px 18px rgba(15,23,42,0.07); 
+    }
+    
+    .glow {
+      box-shadow: 0 0 15px rgba(22, 163, 74, 0.3);
+    }
+    
+    .testimonial-card {
+      transition: all 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .tab-active {
+      background-color: #16a34a;
+      color: white;
+    }
+    
+    .quote-icon {
+      opacity: 0.1;
+      transition: opacity 0.3s ease;
+    }
+    
+    .testimonial-card:hover .quote-icon {
+      opacity: 0.2;
+    }
+    
+    .stars {
+      color: #f59e0b;
+    }
+    
+    .video-thumbnail {
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .video-thumbnail:hover {
+      transform: scale(1.03);
+    }
+    
+    .video-thumbnail::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      transition: background 0.3s ease;
+    }
+    
+    .video-thumbnail:hover::after {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(22, 163, 74, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+    
+    .video-thumbnail:hover .play-button {
+      background: rgba(22, 163, 74, 1);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-800 bg-white">
+  <!-- Header -->
+  <header class="bg-white sticky top-0 z-50 border-b transition-all duration-300" id="header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold floating-animation">EY</div>
+          <div>
+            <a href="index.html" class="text-lg font-semibold">EcoYugam</a>
+            <p class="text-xs text-slate-500">Testimonials</p>
+          </div>
+        </div>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="index.html" class="hover:text-emerald-600 transition-colors">Home</a>
+          <a href="about.html" class="hover:text-emerald-600 transition-colors">About</a>
+          <a href="programs.html" class="hover:text-emerald-600 transition-colors">Programs</a>
+          <a href="services.html" class="hover:text-emerald-600 transition-colors">Services</a>
+          <a href="impact.html" class="hover:text-emerald-600 transition-colors">Impact</a>
+          <a href="testimonials.html" class="text-white bg-emerald-600 px-3 py-2 rounded shadow-sm hover:bg-emerald-700 transition-colors glow">Testimonials</a>
+          <a href="contact.html" class="hover:text-emerald-600 transition-colors">Contact</a>
+        </nav>
+        <div class="md:hidden">
+          <button id="menuBtn" class="p-2 rounded hover:bg-slate-100 transition-colors">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden border-t md:hidden bg-white">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="index.html" class="py-2 hover:text-emerald-600 transition-colors">Home</a>
+        <a href="about.html" class="py-2 hover:text-emerald-600 transition-colors">About</a>
+        <a href="programs.html" class="py-2 hover:text-emerald-600 transition-colors">Programs</a>
+        <a href="services.html" class="py-2 hover:text-emerald-600 transition-colors">Services</a>
+        <a href="impact.html" class="py-2 hover:text-emerald-600 transition-colors">Impact</a>
+        <a href="testimonials.html" class="py-2 font-semibold text-emerald-600">Testimonials</a>
+        <a href="contact.html" class="py-2 hover:text-emerald-600 transition-colors">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-20 bg-gradient-to-br from-emerald-50 via-cyan-50 to-sky-50 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-emerald-200 floating-animation"></div>
+      <div class="absolute top-40 right-20 w-16 h-16 rounded-full bg-cyan-200 floating-animation" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-20 left-1/4 w-24 h-24 rounded-full bg-emerald-100 floating-animation" style="animation-delay: 2s;"></div>
+      <div class="absolute top-1/2 left-1/2 w-32 h-32 rounded-full bg-sky-100 floating-animation" style="animation-delay: 1.5s;"></div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <h1 class="text-4xl sm:text-6xl font-extrabold mb-6" data-aos="fade-up">
+        Voices of <span class="gradient-text">Impact</span>
+      </h1>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="200">
+        Hear directly from community members, partners, government officials, and beneficiaries about their experiences with EcoYugam's programs and the difference they've made.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
+        <a href="#testimonials" class="px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors glow">
+          Read Stories <i class="fas fa-arrow-down ml-2"></i>
+        </a>
+        <a href="#share-story" class="px-6 py-3 border border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-colors">
+          Share Your Story <i class="fas fa-pen ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Categories -->
+  <section class="py-8 bg-slate-50 sticky top-16 z-40" id="testimonial-filter">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap justify-center gap-2" data-aos="fade-up">
+        <button class="px-4 py-2 rounded-full bg-emerald-600 text-white tab-active" data-category="all">All Stories</button>
+        <button class="px-4 py-2 rounded-full border hover:bg-slate-100 transition-colors" data-category="community">Community</button>
+        <button class="px-4 py-2 rounded-full border hover:bg-slate-100 transition-colors" data-category="government">Government</button>
+        <button class="px-4 py-2 rounded-full border hover:bg-slate-100 transition-colors" data-category="corporate">Corporate</button>
+        <button class="px-4 py-2 rounded-full border hover:bg-slate-100 transition-colors" data-category="partner">Partners</button>
+        <button class="px-4 py-2 rounded-full border hover:bg-slate-100 transition-colors" data-category="volunteer">Volunteers</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card bg-white rounded-xl p-6 pill-shadow" data-aos="fade-up" data-aos-delay="0" data-category="community">
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex items-center">
+              <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=150&q=80" alt="Priya Sharma" class="w-12 h-12 rounded-full object-cover mr-4">
+              <div>
+                <h3 class="font-bold text-slate-800">Priya Sharma</h3>
+                <p class="text-sm text-slate-500">Community Leader, Delhi</p>
+              </div>
+            </div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="relative">
+            <i class="fas fa-quote-left text-emerald-500 text-4xl absolute -top-2 -left-2 quote-icon"></i>
+            <p class="text-slate-600 relative z-10">
+              "The Waste Recycling Initiative transformed our neighborhood. Before EcoYugam, we had overflowing bins and waste everywhere. Now, we've reduced landfill waste by 75% and created income opportunities for local women through the recycling program. Our community is cleaner, healthier, and more united."
+            </p>
+          </div>
+          <div class="mt-4 flex items-center text-sm text-slate-500">
+            <i class="fas fa-calendar mr-2"></i>
+            <span>Participant since 2021</span>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card bg-white rounded-xl p-6 pill-shadow" data-aos="fade-up" data-aos-delay="100" data-category="government">
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex items-center">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Rajesh Kumar" class="w-12 h-12 rounded-full object-cover mr-4">
+              <div>
+                <h3 class="font-bold text-slate-800">Rajesh Kumar</h3>
+                <p class="text-sm text-slate-500">Municipal Commissioner</p>
+              </div>
+            </div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="relative">
+            <i class="fas fa-quote-left text-emerald-500 text-4xl absolute -top-2 -left-2 quote-icon"></i>
+            <p class="text-slate-600 relative z-10">
+              "EcoYugam's smart waste management system has been a game-changer for our city. The IoT-enabled bins and optimized collection routes reduced our operational costs by 30% while increasing recycling rates significantly. Their data-driven approach provides insights we never had before. A true public-private partnership success story."
+            </p>
+          </div>
+          <div class="mt-4 flex items-center text-sm text-slate-500">
+            <i class="fas fa-calendar mr-2"></i>
+            <span>Partner since 2020</span>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card bg-white rounded-xl p-6 pill-shadow" data-aos="fade-up" data-aos-delay="200" data-category="corporate">
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex items-center">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Anil Mehta" class="w-12 h-12 rounded-full object-cover mr-4">
+              <div>
+                <h3 class="font-bold text-slate-800">Anil Mehta</h3>
+                <p class="text-sm text-slate-500">CSR Head, GreenTech Industries</p>
+              </div>
+            </div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+          <div class="relative">
+            <i class="fas fa-quote-left text-emerald-500 text-4xl absolute -top-2 -left-2 quote-icon"></i>
+            <p class="text-slate-600 relative z-10">
+              "Our partnership with EcoYugam on the E-Waste to Resources program has been exceptional. They helped us establish a compliant and efficient system for managing our electronic waste, creating both environmental and social impact. The transparency in their reporting gives us confidence that our CSR investment is making a real difference."
+            </p>
+          </div>
+          <div class="mt-4 flex items-center text-sm text-slate-500">
+            <i class="fas fa-calendar mr-2"></i>
+            <span>Partner since 2022</span>
+          </div>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="testimonial-card bg-white rounded-xl p-6 pill-shadow" data-aos="fade-up" data-aos-delay="300" data-category="community">
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex items-center">
+              <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=150&q=80" alt="Sunita Patel" class="w-12 h-12 rounded-full object-cover mr-4">
+              <div>
+                <h3 class="font-bold text-slate-800">Sunita Patel</h3>
+                <p class="text-sm text-slate-500">Waste Collector turned Entrepreneur</p>
+              </div>
+            </div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="relative">
+            <i class="fas fa-quote-left text-emerald-500 text-4xl absolute -top-2 -left-2 quote-icon"></i>
+            <p class="text-slate-600 relative z-10">
+              "I used to work as a waste picker in unsafe conditions. EcoYugam's training program gave me the skills to start my own small recycling business. Now I employ 5 people from my community and process 500kg of plastic monthly. My children are in school, and we have a stable home. This program changed my life completely."
+            </p>
+          </div>
+          <div class="mt-4 flex items-center text-sm text-slate-500">
+            <i class="fas fa-calendar mr-2"></i>
+            <span>Beneficiary since 2019</span>
+          </div>
+        </div>
+
+        <!-- Testimonial 5 -->
+        <div class="testimonial-card bg-white rounded-xl p-6 pill-shadow" data-aos="fade-up" data-aos-delay="400" data-category="partner">
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex items-center">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Dr. Amit Joshi" class="w-12 h-12 rounded-full object-cover mr-4">
+              <div>
+                <h3 class="font-bold text-slate-800">Dr. Amit Joshi</h3>
+                <p class="text-sm text-slate-500">Environmental Scientist, UNDP</p>
+              </div>
+            </div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="relative">
+            <i class="fas fa-quote-left text-emerald-500 text-4xl absolute -top-2 -left-2 quote-icon"></i>
+            <p class="text-slate-600 relative z-10">
+              "EcoYugam's approach to circular economy implementation is exemplary. Their multi-stakeholder model effectively bridges gaps between government, industry, and communities. The data they collect provides valuable insights for policy development. We're proud to partner with them on scaling circular economy solutions across India."
+            </p>
+          </div>
+          <div class="mt-4 flex items-center text-sm text-slate-500">
+            <i class="fas fa-calendar mr-2"></i>
+            <span>Partner since 2020</span>
+          </div>
+        </div>
+
+        <!-- Testimonial 6 -->
+        <div class="testimonial-card bg-white rounded-xl p-6 pill-shadow" data-aos="fade-up" data-aos-delay="500" data-category="volunteer">
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex items-center">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" alt="Rahul Verma" class="w-12 h-12 rounded-full object-cover mr-4">
+              <div>
+                <h3 class="font-bold text-slate-800">Rahul Verma</h3>
+                <p class="text-sm text-slate-500">College Student & Volunteer</p>
+              </div>
+            </div>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="relative">
+            <i class="fas fa-quote-left text-emerald-500 text-4xl absolute -top-2 -left-2 quote-icon"></i>
+            <p class="text-slate-600 relative z-10">
+              "Volunteering with EcoYugam's Green Earth Plantation Drive was one of the most rewarding experiences of my life. Not only did I help plant 500+ trees, but I also learned about ecosystem restoration and community engagement. The training sessions were eye-opening, and I've since started an environmental club at my college."
+            </p>
+          </div>
+          <div class="mt-4 flex items-center text-sm text-slate-500">
+            <i class="fas fa-calendar mr-2"></i>
+            <span>Volunteer since 2022</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12" data-aos="fade-up">
+        <a href="#" class="inline-flex items-center px-6 py-3 border border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-colors">
+          Load More Stories <i class="fas fa-sync-alt ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Testimonials Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Video Testimonials</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">Hear directly from our community members and partners in their own words.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="video-thumbnail" data-aos="zoom-in" data-aos-delay="0">
+          <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=500&q=80" alt="Community Transformation" class="w-full h-48 object-cover rounded-xl">
+          <div class="play-button">
+            <i class="fas fa-play text-white text-xl"></i>
+          </div>
+          <div class="absolute bottom-4 left-4 text-white z-10">
+            <p class="font-semibold">Community Transformation</p>
+            <p class="text-sm">Delhi Residents Share Their Story</p>
+          </div>
+        </div>
+
+        <div class="video-thumbnail" data-aos="zoom-in" data-aos-delay="100">
+          <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=500&q=80" alt="Green Jobs Creation" class="w-full h-48 object-cover rounded-xl">
+          <div class="play-button">
+            <i class="fas fa-play text-white text-xl"></i>
+          </div>
+          <div class="absolute bottom-4 left-4 text-white z-10">
+            <p class="font-semibold">Green Jobs Creation</p>
+            <p class="text-sm">From Waste Pickers to Entrepreneurs</p>
+          </div>
+        </div>
+
+        <div class="video-thumbnail" data-aos="zoom-in" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1542744095-291d1f67b221?auto=format&fit=crop&w=500&q=80" alt="Partnership Impact" class="w-full h-48 object-cover rounded-xl">
+          <div class="play-button">
+            <i class="fas fa-play text-white text-xl"></i>
+          </div>
+          <div class="absolute bottom-4 left-4 text-white z-10">
+            <p class="font-semibold">Partnership Impact</p>
+            <p class="text-sm">Corporate Leaders Share Experiences</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Stats Section -->
+  <section class="py-16 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Trusted by Thousands</h2>
+        <p class="text-emerald-100 max-w-3xl mx-auto">The impact of our work is reflected in the numbers and the stories of those we've served.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bg-white/10 p-6 rounded-xl text-center" data-aos="zoom-in" data-aos-delay="0">
+          <div class="text-3xl font-bold mb-2">12,500+</div>
+          <p class="text-emerald-100 text-sm">People Directly Impacted</p>
+        </div>
+        
+        <div class="bg-white/10 p-6 rounded-xl text-center" data-aos="zoom-in" data-aos-delay="100">
+          <div class="text-3xl font-bold mb-2">245</div>
+          <p class="text-emerald-100 text-sm">Communities Engaged</p>
+        </div>
+        
+        <div class="bg-white/10 p-6 rounded-xl text-center" data-aos="zoom-in" data-aos-delay="200">
+          <div class="text-3xl font-bold mb-2">98%</div>
+          <p class="text-emerald-100 text-sm">Satisfaction Rate</p>
+        </div>
+        
+        <div class="bg-white/10 p-6 rounded-xl text-center" data-aos="zoom-in" data-aos-delay="300">
+          <div class="text-3xl font-bold mb-2">4.8/5</div>
+          <p class="text-emerald-100 text-sm">Average Rating</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Share Your Story Section -->
+  <section id="share-story" class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Share Your EcoYugam Story</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">Have you been impacted by our programs? We'd love to hear about your experience and potentially feature your story.</p>
+      </div>
+
+      <div class="bg-slate-50 rounded-xl p-8" data-aos="fade-up" data-aos-delay="200">
+        <form class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
+              <input type="text" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+              <input type="email" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Your Connection to EcoYugam</label>
+            <select class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              <option>Select an option</option>
+              <option>Community Member</option>
+              <option>Program Participant</option>
+              <option>Government Partner</option>
+              <option>Corporate Partner</option>
+              <option>NGO Partner</option>
+              <option>Volunteer</option>
+              <option>Donor</option>
+              <option>Other</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">Your Testimonial</label>
+            <textarea rows="5" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Tell us about your experience with EcoYugam..."></textarea>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-2">How would you rate your experience?</label>
+            <div class="flex space-x-1 text-2xl">
+              <i class="far fa-star text-amber-400 cursor-pointer" data-rating="1"></i>
+              <i class="far fa-star text-amber-400 cursor-pointer" data-rating="2"></i>
+              <i class="far fa-star text-amber-400 cursor-pointer" data-rating="3"></i>
+              <i class="far fa-star text-amber-400 cursor-pointer" data-rating="4"></i>
+              <i class="far fa-star text-amber-400 cursor-pointer" data-rating="5"></i>
+            </div>
+          </div>
+          
+          <div class="flex items-center">
+            <input type="checkbox" id="consent" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500">
+            <label for="consent" class="ml-2 text-sm text-slate-600">I give EcoYugam permission to use my testimonial on their website and marketing materials</label>
+          </div>
+          
+          <button type="submit" class="w-full py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors">
+            Share My Story
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t py-12 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold">EY</div>
+            <div>
+              <a href="index.html" class="font-bold text-lg text-emerald-600">EcoYugam</a>
+              <p class="text-xs text-slate-500">Testimonials</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-600 mb-4">Real stories from our community members, partners, and beneficiaries about their experiences with EcoYugam.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-twitter text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Home</a></li>
+            <li><a href="about.html" class="text-slate-600 hover:text-emerald-600 transition-colors">About</a></li>
+            <li><a href="programs.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Programs</a></li>
+            <li><a href="services.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Services</a></li>
+            <li><a href="impact.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Impact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">Testimonial Categories</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Community Stories</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Government Partners</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Corporate Partners</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">NGO Partners</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Volunteer Experiences</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">Contact Us</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">123 Green Avenue, Eco Park, New Delhi, India 110001</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">+91 11 2345 6789</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">stories@ecoyugam.org</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div>
+          <p class="text-sm text-slate-600">© <span id="year"></span> EcoYugam. All rights reserved.</p>
+        </div>
+        <div class="text-sm text-slate-600 mt-2 md:mt-0">Real stories, real impact</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-emerald-600 text-white shadow-lg hover:bg-emerald-700 transition-colors opacity-0 invisible transition-all duration-300 z-40">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Testimonial filtering
+    const filterButtons = document.querySelectorAll('#testimonial-filter button');
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('tab-active', 'bg-emerald-600', 'text-white'));
+        button.classList.add('tab-active', 'bg-emerald-600', 'text-white');
+        
+        const filterValue = button.getAttribute('data-category');
+        
+        // Filter testimonials
+        testimonialCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          
+          if (filterValue === 'all' || category === filterValue) {
+            card.style.display = 'block';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, 100);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+
+    // Star rating for testimonial form
+    const stars = document.querySelectorAll('[data-rating]');
+    let selectedRating = 0;
+    
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        const rating = parseInt(star.getAttribute('data-rating'));
+        selectedRating = rating;
+        
+        stars.forEach((s, index) => {
+          if (index < rating) {
+            s.classList.remove('far');
+            s.classList.add('fas');
+          } else {
+            s.classList.remove('fas');
+            s.classList.add('far');
+          }
+        });
+      });
+      
+      star.addEventListener('mouseover', () => {
+        const rating = parseInt(star.getAttribute('data-rating'));
+        
+        stars.forEach((s, index) => {
+          if (index < rating) {
+            s.classList.remove('far');
+            s.classList.add('fas');
+          }
+        });
+      });
+      
+      star.addEventListener('mouseout', () => {
+        stars.forEach((s, index) => {
+          if (index >= selectedRating) {
+            s.classList.remove('fas');
+            s.classList.add('far');
+          }
+        });
+      });
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+  </script>
+</body>
+</html>

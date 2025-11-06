@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero Waste Management System | EcoYugam</title>
+  <meta name="description" content="EcoYugam's Zero Waste Management System - Implementing comprehensive waste reduction strategies through circular economy principles and sustainable practices." />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .gradient-text {
+      background: linear-gradient(90deg, #16a34a, #0d9488, #0ea5e9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      animation: gradient 3s ease infinite;
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .floating-animation {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translate(0, 0px); }
+      50% { transform: translate(0, -10px); }
+      100% { transform: translate(0, 0px); }
+    }
+    
+    .pill-shadow { 
+      box-shadow: 0 6px 18px rgba(15,23,42,0.07); 
+    }
+    
+    .glow {
+      box-shadow: 0 0 15px rgba(22, 163, 74, 0.3);
+    }
+    
+    .process-card {
+      transition: all 0.3s ease;
+    }
+    
+    .process-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .material-flow {
+      background: linear-gradient(135deg, #16a34a, #0d9488, #0ea5e9);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .pulse-dot {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .resource-card {
+      transition: all 0.3s ease;
+    }
+    
+    .resource-card:hover {
+      transform: scale(1.05);
+    }
+    
+    .zero-waste-visual {
+      position: relative;
+      background: linear-gradient(135deg, #1e293b, #334155);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .recycling-animation {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #16a34a, transparent);
+      animation: recycling 3s linear infinite;
+    }
+    
+    @keyframes recycling {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    .stats-counter {
+      font-variant-numeric: tabular-nums;
+    }
+    
+    .waste-hierarchy {
+      position: relative;
+    }
+    
+    .hierarchy-step {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hierarchy-connector {
+      position: absolute;
+      height: 2px;
+      background: #16a34a;
+      top: 50%;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-800 bg-white">
+  <!-- Header -->
+  <header class="bg-white sticky top-0 z-50 border-b transition-all duration-300" id="header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold floating-animation">EY</div>
+          <div>
+            <a href="index.html" class="text-lg font-semibold">EcoYugam</a>
+            <p class="text-xs text-slate-500">Zero Waste Management</p>
+          </div>
+        </div>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="index.html" class="hover:text-emerald-600 transition-colors">Home</a>
+          <a href="about.html" class="hover:text-emerald-600 transition-colors">About</a>
+          <a href="programs.html" class="hover:text-emerald-600 transition-colors">Programs</a>
+          <a href="services.html" class="hover:text-emerald-600 transition-colors">Services</a>
+          <a href="impact.html" class="hover:text-emerald-600 transition-colors">Impact</a>
+          <a href="contact.html" class="hover:text-emerald-600 transition-colors">Contact</a>
+        </nav>
+        <div class="md:hidden">
+          <button id="menuBtn" class="p-2 rounded hover:bg-slate-100 transition-colors">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden border-t md:hidden bg-white">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="index.html" class="py-2 hover:text-emerald-600 transition-colors">Home</a>
+        <a href="about.html" class="py-2 hover:text-emerald-600 transition-colors">About</a>
+        <a href="programs.html" class="py-2 hover:text-emerald-600 transition-colors">Programs</a>
+        <a href="services.html" class="py-2 hover:text-emerald-600 transition-colors">Services</a>
+        <a href="impact.html" class="py-2 hover:text-emerald-600 transition-colors">Impact</a>
+        <a href="contact.html" class="py-2 hover:text-emerald-600 transition-colors">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-20 bg-gradient-to-br from-emerald-50 via-cyan-50 to-sky-50 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-emerald-200 floating-animation"></div>
+      <div class="absolute top-40 right-20 w-16 h-16 rounded-full bg-cyan-200 floating-animation" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-20 left-1/4 w-24 h-24 rounded-full bg-emerald-100 floating-animation" style="animation-delay: 2s;"></div>
+      <div class="absolute top-1/2 left-1/2 w-32 h-32 rounded-full bg-sky-100 floating-animation" style="animation-delay: 1.5s;"></div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <h1 class="text-4xl sm:text-6xl font-extrabold mb-6">
+            Zero Waste <span class="gradient-text">Management</span>
+          </h1>
+          <p class="text-xl text-slate-600 mb-8">
+            Implementing comprehensive waste reduction strategies through circular economy principles, sustainable practices, and community engagement.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#how-it-works" class="px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors glow">
+              Our Approach <i class="fas fa-arrow-down ml-2"></i>
+            </a>
+            <a href="#get-involved" class="px-6 py-3 border border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-colors">
+              Get Involved <i class="fas fa-hands-helping ml-2"></i>
+            </a>
+          </div>
+        </div>
+        <div data-aos="fade-left" data-aos-delay="200">
+          <div class="material-flow p-8 text-white text-center">
+            <div class="mb-6">
+              <i class="fas fa-recycle text-6xl mb-4"></i>
+              <h3 class="text-2xl font-bold">Zero Waste Progress</h3>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+              <div class="bg-white/20 rounded-xl p-4">
+                <p class="text-2xl font-bold">87%</p>
+                <p class="text-sm">Waste Diversion Rate</p>
+              </div>
+              <div class="bg-white/20 rounded-xl p-4">
+                <p class="text-2xl font-bold">42</p>
+                <p class="text-sm">Zero Waste Communities</p>
+              </div>
+              <div class="bg-white/20 rounded-xl p-4">
+                <p class="text-2xl font-bold">95%</p>
+                <p class="text-sm">Compost Recovery</p>
+              </div>
+            </div>
+            <div class="bg-white/20 rounded-xl p-4 relative">
+              <div class="recycling-animation"></div>
+              <p class="font-bold mb-2">Current Waste Stream Status</p>
+              <div class="flex justify-between text-sm">
+                <span>Reduction</span>
+                <span>Reuse</span>
+                <span>Recycling</span>
+                <span>Compost</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waste Problem -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <h2 class="text-3xl font-bold mb-6">India's Waste Management Challenge</h2>
+          <p class="text-slate-600 mb-6">
+            India generates over 62 million tonnes of municipal solid waste annually, with only 70% collected and less than 20% processed. This leads to:
+          </p>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start">
+              <i class="fas fa-exclamation-triangle text-amber-500 mt-1 mr-3"></i>
+              <span><strong>Landfill Overload:</strong> Overflowing landfills polluting air, water, and soil</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-exclamation-triangle text-amber-500 mt-1 mr-3"></i>
+              <span><strong>Greenhouse Gas Emissions:</strong> Methane from decomposing waste contributes to climate change</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-exclamation-triangle text-amber-500 mt-1 mr-3"></i>
+              <span><strong>Resource Depletion:</strong> Valuable materials lost instead of being recycled</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-exclamation-triangle text-amber-500 mt-1 mr-3"></i>
+              <span><strong>Public Health Risks:</strong> Improper waste management spreads diseases</span>
+            </li>
+          </ul>
+          <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg">
+            <p class="text-amber-800 font-semibold">By 2030, India's waste generation is expected to reach 165 million tonnes annually without intervention</p>
+          </div>
+        </div>
+        <div data-aos="fade-left" data-aos-delay="200">
+          <div class="zero-waste-visual p-6 text-white">
+            <h3 class="text-xl font-bold mb-4 text-center">Typical Waste Composition</h3>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="bg-slate-700/50 rounded-lg p-4 text-center">
+                <i class="fas fa-apple-alt text-3xl mb-2"></i>
+                <p class="text-sm">Organic Waste</p>
+                <p class="text-xs mt-1">50-60%</p>
+              </div>
+              <div class="bg-slate-700/50 rounded-lg p-4 text-center">
+                <i class="fas fa-plastic-bottle text-3xl mb-2"></i>
+                <p class="text-sm">Plastics</p>
+                <p class="text-xs mt-1">8-12%</p>
+              </div>
+              <div class="bg-slate-700/50 rounded-lg p-4 text-center">
+                <i class="fas fa-newspaper text-3xl mb-2"></i>
+                <p class="text-sm">Paper</p>
+                <p class="text-xs mt-1">5-8%</p>
+              </div>
+              <div class="bg-slate-700/50 rounded-lg p-4 text-center">
+                <i class="fas fa-cube text-3xl mb-2"></i>
+                <p class="text-sm">Others</p>
+                <p class="text-xs mt-1">20-30%</p>
+              </div>
+            </div>
+            <div class="mt-6 bg-slate-800/70 rounded-lg p-4">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm">Annual Waste Generation</span>
+                <span class="font-bold">62M tonnes</span>
+              </div>
+              <div class="w-full bg-slate-700 rounded-full h-2">
+                <div class="bg-amber-500 h-2 rounded-full" style="width: 70%"></div>
+              </div>
+              <p class="text-xs text-slate-300 mt-2">Only 70% of waste is collected, 20% processed</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waste Hierarchy -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">The Zero Waste Hierarchy</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">A prioritized framework for addressing waste management, from most to least preferred options.</p>
+      </div>
+
+      <div class="waste-hierarchy flex flex-col md:flex-row justify-between items-center mb-16">
+        <div class="hierarchy-step bg-white rounded-xl p-6 text-center w-full md:w-1/5 mb-4 md:mb-0 pill-shadow" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-ban text-emerald-600 text-xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-emerald-700 mb-3">Prevent</h3>
+          <p class="text-slate-600 text-sm">Redesign systems to eliminate waste generation at source</p>
+        </div>
+        
+        <div class="hierarchy-connector w-1/4 hidden md:block"></div>
+        
+        <div class="hierarchy-step bg-white rounded-xl p-6 text-center w-full md:w-1/5 mb-4 md:mb-0 pill-shadow" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-redo text-blue-600 text-xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-blue-700 mb-3">Reduce & Reuse</h3>
+          <p class="text-slate-600 text-sm">Minimize waste and extend product lifecycles</p>
+        </div>
+        
+        <div class="hierarchy-connector w-1/4 hidden md:block"></div>
+        
+        <div class="hierarchy-step bg-white rounded-xl p-6 text-center w-full md:w-1/5 mb-4 md:mb-0 pill-shadow" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-recycle text-amber-600 text-xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-amber-700 mb-3">Recycle & Compost</h3>
+          <p class="text-slate-600 text-sm">Process materials to return them to the economy</p>
+        </div>
+        
+        <div class="hierarchy-connector w-1/4 hidden md:block"></div>
+        
+        <div class="hierarchy-step bg-white rounded-xl p-6 text-center w-full md:w-1/5 mb-4 md:mb-0 pill-shadow" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-bolt text-purple-600 text-xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-purple-700 mb-3">Recover</h3>
+          <p class="text-slate-600 text-sm">Extract energy from non-recyclable materials</p>
+        </div>
+        
+        <div class="hierarchy-connector w-1/4 hidden md:block"></div>
+        
+        <div class="hierarchy-step bg-white rounded-xl p-6 text-center w-full md:w-1/5 mb-4 md:mb-0 pill-shadow" data-aos="fade-up" data-aos-delay="400">
+          <div class="w-16 h-16 rounded-full bg-rose-100 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-trash text-rose-600 text-xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-rose-700 mb-3">Residuals</h3>
+          <p class="text-slate-600 text-sm">Safe disposal of remaining waste with minimal impact</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl p-8 pill-shadow" data-aos="fade-up">
+        <h3 class="text-2xl font-bold text-center mb-8">Our Zero Waste Approach</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="bg-emerald-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-home text-emerald-600 text-3xl"></i>
+            </div>
+            <h4 class="font-bold text-lg mb-2">Community Programs</h4>
+            <p class="text-slate-600 text-sm">Source segregation, composting, and awareness campaigns at neighborhood level</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-industry text-blue-600 text-3xl"></i>
+            </div>
+            <h4 class="font-bold text-lg mb-2">Business Solutions</h4>
+            <p class="text-slate-600 text-sm">Waste audits, circular supply chains, and sustainable packaging for enterprises</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-school text-purple-600 text-3xl"></i>
+            </div>
+            <h4 class="font-bold text-lg mb-2">Education & Training</h4>
+            <p class="text-slate-600 text-sm">Workshops, curriculum development, and capacity building for all age groups</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Our Zero Waste Implementation Process</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">A systematic approach to transforming waste management at individual, community, and organizational levels.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="process-card bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+            <span class="text-emerald-600 font-bold text-xl">1</span>
+          </div>
+          <h3 class="text-xl font-bold text-emerald-700 mb-3">Assessment & Audit</h3>
+          <p class="text-slate-600">Comprehensive waste audit to understand composition, sources, and current management practices.</p>
+          <div class="mt-4 flex justify-center">
+            <i class="fas fa-clipboard-list text-emerald-500 text-xl"></i>
+          </div>
+        </div>
+        
+        <div class="process-card bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
+            <span class="text-blue-600 font-bold text-xl">2</span>
+          </div>
+          <h3 class="text-xl font-bold text-blue-700 mb-3">Strategy Development</h3>
+          <p class="text-slate-600">Customized zero waste plan with clear targets, timelines, and implementation roadmap.</p>
+          <div class="mt-4 flex justify-center">
+            <i class="fas fa-route text-blue-500 text-xl"></i>
+          </div>
+        </div>
+        
+        <div class="process-card bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-4">
+            <span class="text-amber-600 font-bold text-xl">3</span>
+          </div>
+          <h3 class="text-xl font-bold text-amber-700 mb-3">Implementation</h3>
+          <p class="text-slate-600">Deploy infrastructure, training programs, and monitoring systems for effective execution.</p>
+          <div class="mt-4 flex justify-center">
+            <i class="fas fa-tools text-amber-500 text-xl"></i>
+          </div>
+        </div>
+        
+        <div class="process-card bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
+            <span class="text-purple-600 font-bold text-xl">4</span>
+          </div>
+          <h3 class="text-xl font-bold text-purple-700 mb-3">Monitoring & Optimization</h3>
+          <p class="text-slate-600">Continuous tracking, reporting, and improvement to achieve and maintain zero waste goals.</p>
+          <div class="mt-4 flex justify-center">
+            <i class="fas fa-chart-line text-purple-500 text-xl"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl p-8 text-white" data-aos="fade-up">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">Zero Waste Tracking Dashboard</h3>
+            <p class="text-emerald-100 mb-6">Our digital platform provides real-time monitoring of waste diversion metrics and environmental impact.</p>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>Organic Waste Composting</span>
+                  <span class="font-bold">95%</span>
+                </div>
+                <div class="w-full bg-white/20 rounded-full h-2">
+                  <div class="bg-emerald-400 h-2 rounded-full" style="width: 95%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>Dry Waste Recycling</span>
+                  <span class="font-bold">87%</span>
+                </div>
+                <div class="w-full bg-white/20 rounded-full h-2">
+                  <div class="bg-blue-400 h-2 rounded-full" style="width: 87%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>Hazardous Waste Management</span>
+                  <span class="font-bold">92%</span>
+                </div>
+                <div class="w-full bg-white/20 rounded-full h-2">
+                  <div class="bg-amber-400 h-2 rounded-full" style="width: 92%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white/10 rounded-lg p-6">
+            <h4 class="font-bold mb-4 text-center">Annual Impact (Per Community)</h4>
+            <div class="space-y-3">
+              <div class="flex justify-between">
+                <span>Waste Diverted</span>
+                <span class="font-bold">180 tonnes</span>
+              </div>
+              <div class="flex justify-between">
+                <span>CO₂ Reduction</span>
+                <span class="font-bold">320 tonnes</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Compost Produced</span>
+                <span class="font-bold">95 tonnes</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Recyclables</span>
+                <span class="font-bold">65 tonnes</span>
+              </div>
+              <div class="border-t border-white/20 pt-2 mt-2">
+                <div class="flex justify-between font-bold">
+                  <span>Landfill Reduction</span>
+                  <span>87%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs & Solutions -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Zero Waste Programs & Solutions</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">Tailored solutions for different sectors to achieve zero waste goals.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white rounded-xl p-6 pill-shadow" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
+            <i class="fas fa-home text-emerald-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Residential Communities</h3>
+          <p class="text-slate-600 mb-4">Source segregation, community composting, and awareness programs for housing societies and neighborhoods.</p>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li class="flex items-center">
+              <i class="fas fa-check text-emerald-500 mr-2"></i>
+              <span>Waste segregation at source</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-emerald-500 mr-2"></i>
+              <span>Community composting units</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-emerald-500 mr-2"></i>
+              <span>Regular awareness workshops</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 pill-shadow" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+            <i class="fas fa-industry text-blue-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Commercial & Industrial</h3>
+          <p class="text-slate-600 mb-4">Waste audits, circular economy implementation, and sustainable supply chain management for businesses.</p>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li class="flex items-center">
+              <i class="fas fa-check text-blue-500 mr-2"></i>
+              <span>Comprehensive waste audits</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-blue-500 mr-2"></i>
+              <span>Circular economy strategies</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-blue-500 mr-2"></i>
+              <span>EPR compliance support</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 pill-shadow" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mb-4">
+            <i class="fas fa-school text-amber-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Educational Institutions</h3>
+          <p class="text-slate-600 mb-4">Campus waste management, curriculum integration, and student-led initiatives for schools and colleges.</p>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li class="flex items-center">
+              <i class="fas fa-check text-amber-500 mr-2"></i>
+              <span>Campus waste management systems</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-amber-500 mr-2"></i>
+              <span>Environmental curriculum</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check text-amber-500 mr-2"></i>
+              <span>Student green clubs</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl p-8 pill-shadow" data-aos="fade-up">
+        <h3 class="text-2xl font-bold text-center mb-8">Specialized Waste Stream Management</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h4 class="font-bold text-lg mb-4 text-emerald-700">Organic Waste Solutions</h4>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-seedling text-emerald-600"></i>
+                </div>
+                <div>
+                  <h5 class="font-bold">Community Composting</h5>
+                  <p class="text-slate-600 text-sm">Decentralized composting units for housing societies and institutions</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-cogs text-emerald-600"></i>
+                </div>
+                <div>
+                  <h5 class="font-bold">Vermicomposting</h5>
+                  <p class="text-slate-600 text-sm">Earthworm-based composting for high-quality organic manure</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-industry text-emerald-600"></i>
+                </div>
+                <div>
+                  <h5 class="font-bold">Biogas Plants</h5>
+                  <p class="text-slate-600 text-sm">Large-scale anaerobic digestion for energy recovery from organic waste</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-bold text-lg mb-4 text-blue-700">Dry Waste Solutions</h4>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-sort text-blue-600"></i>
+                </div>
+                <div>
+                  <h5 class="font-bold">Material Recovery Facilities</h5>
+                  <p class="text-slate-600 text-sm">Advanced sorting and processing for maximum recycling efficiency</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-exchange-alt text-blue-600"></i>
+                </div>
+                <div>
+                  <h5 class="font-bold">Upcycling Initiatives</h5>
+                  <p class="text-slate-600 text-sm">Creative reuse of materials to create higher-value products</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-sync text-blue-600"></i>
+                </div>
+                <div>
+                  <h5 class="font-bold">Circular Economy Models</h5>
+                  <p class="text-slate-600 text-sm">Closed-loop systems to keep materials in continuous use</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact & Benefits -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Environmental & Economic Impact</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">Our Zero Waste Management System delivers measurable benefits across multiple dimensions.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="0">
+          <div class="text-3xl font-bold text-emerald-600 mb-2 stats-counter" data-count="42">42</div>
+          <p class="text-slate-600 font-medium">Zero Waste Communities</p>
+          <div class="mt-4 text-sm text-slate-500">Across 8 states in India</div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-3xl font-bold text-blue-600 mb-2 stats-counter" data-count="12500">12,500</div>
+          <p class="text-slate-600 font-medium">Tonnes Waste Diverted</p>
+          <div class="mt-4 text-sm text-slate-500">From landfills annually</div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-3xl font-bold text-amber-600 mb-2 stats-counter" data-count="320">320</div>
+          <p class="text-slate-600 font-medium">Green Jobs Created</p>
+          <div class="mt-4 text-sm text-slate-500">In waste management sector</div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 text-center pill-shadow" data-aos="fade-up" data-aos-delay="300">
+          <div class="text-3xl font-bold text-purple-600 mb-2 stats-counter" data-count="85">85</div>
+          <p class="text-slate-600 font-medium">Corporate Partners</p>
+          <div class="mt-4 text-sm text-slate-500">Implementing zero waste</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div data-aos="fade-right">
+          <h3 class="text-2xl font-bold mb-6">Environmental Benefits</h3>
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-leaf text-emerald-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Reduced Landfill Burden</h4>
+                <p class="text-slate-600 text-sm mt-1">Diverting waste from landfills reduces methane emissions and soil contamination.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-tint text-blue-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Resource Conservation</h4>
+                <p class="text-slate-600 text-sm mt-1">Recycling and composting conserve natural resources and reduce extraction impacts.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-bolt text-amber-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Climate Change Mitigation</h4>
+                <p class="text-slate-600 text-sm mt-1">Waste reduction directly lowers greenhouse gas emissions from waste sector.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div data-aos="fade-left" data-aos-delay="200">
+          <h3 class="text-2xl font-bold mb-6">Economic & Social Benefits</h3>
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-rupee-sign text-purple-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Cost Savings</h4>
+                <p class="text-slate-600 text-sm mt-1">Reduced waste disposal costs and revenue from recycled materials.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-briefcase text-cyan-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Green Employment</h4>
+                <p class="text-slate-600 text-sm mt-1">Creates dignified jobs in collection, processing, and recycling sectors.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-heart text-rose-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Community Wellbeing</h4>
+                <p class="text-slate-600 text-sm mt-1">Cleaner environments and community engagement improve quality of life.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get Involved -->
+  <section id="get-involved" class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Get Involved in Zero Waste</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">Join the movement towards a waste-free future through various engagement opportunities.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div data-aos="fade-right">
+          <h3 class="text-2xl font-bold mb-6">Individual & Community Actions</h3>
+          
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-home text-emerald-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Home Waste Audit</h4>
+                <p class="text-slate-600 text-sm mt-1">Conduct a simple waste audit to understand your household waste patterns.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-seedling text-blue-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Home Composting</h4>
+                <p class="text-slate-600 text-sm mt-1">Start composting kitchen waste to reduce organic waste and create nutrient-rich soil.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-shopping-bag text-amber-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Sustainable Shopping</h4>
+                <p class="text-slate-600 text-sm mt-1">Choose products with minimal packaging and bring your own containers.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-users text-purple-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Community Initiatives</h4>
+                <p class="text-slate-600 text-sm mt-1">Join or start local zero waste groups and awareness campaigns.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8 bg-emerald-50 rounded-xl p-6">
+            <h4 class="font-bold text-emerald-800 mb-2">Zero Waste Resources</h4>
+            <div class="grid grid-cols-1 gap-2 text-sm">
+              <div class="flex items-center">
+                <i class="fas fa-book text-emerald-500 mr-2"></i>
+                <span>Zero Waste Home Guide</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-video text-emerald-500 mr-2"></i>
+                <span>Composting Tutorial Videos</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-file-pdf text-emerald-500 mr-2"></i>
+                <span>Waste Segregation Handbook</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-calendar text-emerald-500 mr-2"></i>
+                <span>Workshop & Event Calendar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div data-aos="fade-left" data-aos-delay="200">
+          <div class="bg-white rounded-xl p-8 pill-shadow">
+            <h3 class="text-2xl font-bold mb-6">Start Your Zero Waste Journey</h3>
+            <form class="space-y-6">
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-2">Full Name</label>
+                <input type="text" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+                <input type="email" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-2">Phone Number</label>
+                <input type="tel" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-2">I am interested in</label>
+                <select class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                  <option>Select option</option>
+                  <option>Individual zero waste practices</option>
+                  <option>Community zero waste program</option>
+                  <option>Corporate zero waste solutions</option>
+                  <option>Educational institution program</option>
+                  <option>Volunteering opportunities</option>
+                  <option>Workshops & training</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-2">Location</label>
+                <input type="text" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="City, State">
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-2">Message (Optional)</label>
+                <textarea rows="3" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Tell us about your zero waste goals or questions..."></textarea>
+              </div>
+              
+              <button type="submit" class="w-full py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors">
+                Start My Zero Waste Journey
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t py-12 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold">EY</div>
+            <div>
+              <a href="index.html" class="font-bold text-lg text-emerald-600">EcoYugam</a>
+              <p class="text-xs text-slate-500">Zero Waste Management</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-600 mb-4">Implementing comprehensive waste reduction strategies through circular economy principles and sustainable practices.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-twitter text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Home</a></li>
+            <li><a href="about.html" class="text-slate-600 hover:text-emerald-600 transition-colors">About</a></li>
+            <li><a href="programs.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Programs</a></li>
+            <li><a href="services.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Services</a></li>
+            <li><a href="impact.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Impact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">Zero Waste Resources</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Zero Waste Guide</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Composting at Home</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Waste Segregation</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Corporate Programs</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Educational Materials</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">Contact Us</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">123 Green Avenue, Eco Park, New Delhi, India 110001</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">+91 11 2345 6789</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">zerowaste@ecoyugam.org</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div>
+          <p class="text-sm text-slate-600">© <span id="year"></span> EcoYugam. All rights reserved.</p>
+        </div>
+        <div class="text-sm text-slate-600 mt-2 md:mt-0">Creating a waste-free world through sustainable practices</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-emerald-600 text-white shadow-lg hover:bg-emerald-700 transition-colors opacity-0 invisible transition-all duration-300 z-40">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Animated counters
+    const counters = document.querySelectorAll('.stats-counter');
+    const speed = 200;
+    
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-count');
+        const count = +counter.innerText.replace(',', '');
+        const increment = target / speed;
+        
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment).toLocaleString();
+          setTimeout(animateCounters, 1);
+        } else {
+          counter.innerText = target.toLocaleString();
+        }
+      });
+    };
+    
+    // Start counters when section is in view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    observer.observe(document.getElementById('how-it-works'));
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+  </script>
+</body>
+</html>

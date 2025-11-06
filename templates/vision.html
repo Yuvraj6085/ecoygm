@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Vision | EcoYugam</title>
+  <meta name="description" content="Discover EcoYugam's vision for a sustainable India - a future where circular economy principles transform waste into resources and communities thrive in harmony with nature." />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    .gradient-text {
+      background: linear-gradient(90deg, #16a34a, #0d9488, #0ea5e9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      animation: gradient 3s ease infinite;
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .floating-animation {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translate(0, 0px); }
+      50% { transform: translate(0, -10px); }
+      100% { transform: translate(0, 0px); }
+    }
+    
+    .pill-shadow { 
+      box-shadow: 0 6px 18px rgba(15,23,42,0.07); 
+    }
+    
+    .glow {
+      box-shadow: 0 0 15px rgba(22, 163, 74, 0.3);
+    }
+    
+    .vision-card {
+      transition: all 0.3s ease;
+    }
+    
+    .vision-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    .timeline {
+      position: relative;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #16a34a, #0ea5e9);
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-left: 50px;
+      margin-bottom: 40px;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 5px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: #16a34a;
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px #16a34a;
+    }
+    
+    .future-card {
+      background: linear-gradient(135deg, #16a34a, #0d9488);
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .future-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(22, 163, 74, 0.3);
+    }
+    
+    .pulse-animation {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-800 bg-white">
+  <!-- Header -->
+  <header class="bg-white sticky top-0 z-50 border-b transition-all duration-300" id="header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold floating-animation">EY</div>
+          <div>
+            <a href="index.html" class="text-lg font-semibold">EcoYugam</a>
+            <p class="text-xs text-slate-500">Our Vision for India</p>
+          </div>
+        </div>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="index.html" class="hover:text-emerald-600 transition-colors">Home</a>
+          <a href="about.html" class="hover:text-emerald-600 transition-colors">About</a>
+          <a href="programs.html" class="hover:text-emerald-600 transition-colors">Programs</a>
+          <a href="impact.html" class="hover:text-emerald-600 transition-colors">Impact</a>
+          <a href="vision.html" class="text-white bg-emerald-600 px-3 py-2 rounded shadow-sm hover:bg-emerald-700 transition-colors glow">Vision</a>
+          <a href="contact.html" class="hover:text-emerald-600 transition-colors">Contact</a>
+        </nav>
+        <div class="md:hidden">
+          <button id="menuBtn" class="p-2 rounded hover:bg-slate-100 transition-colors">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden border-t md:hidden bg-white">
+      <div class="px-4 py-3 flex flex-col gap-2">
+        <a href="index.html" class="py-2 hover:text-emerald-600 transition-colors">Home</a>
+        <a href="about.html" class="py-2 hover:text-emerald-600 transition-colors">About</a>
+        <a href="programs.html" class="py-2 hover:text-emerald-600 transition-colors">Programs</a>
+        <a href="impact.html" class="py-2 hover:text-emerald-600 transition-colors">Impact</a>
+        <a href="vision.html" class="py-2 font-semibold text-emerald-600">Vision</a>
+        <a href="contact.html" class="py-2 hover:text-emerald-600 transition-colors">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="py-20 bg-gradient-to-br from-emerald-50 via-cyan-50 to-sky-50 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-emerald-200 floating-animation"></div>
+      <div class="absolute top-40 right-20 w-16 h-16 rounded-full bg-cyan-200 floating-animation" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-20 left-1/4 w-24 h-24 rounded-full bg-emerald-100 floating-animation" style="animation-delay: 2s;"></div>
+      <div class="absolute top-1/2 left-1/2 w-32 h-32 rounded-full bg-sky-100 floating-animation" style="animation-delay: 1.5s;"></div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <h1 class="text-4xl sm:text-6xl font-extrabold mb-6" data-aos="fade-up">
+        Our Vision for <span class="gradient-text">India's Green Future</span>
+      </h1>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="200">
+        Envisioning a transformed India where circular economy principles eliminate waste, restore ecosystems, and create prosperity for all communities in harmony with nature.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
+        <a href="#vision-statement" class="px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors glow">
+          Our Vision <i class="fas fa-eye ml-2"></i>
+        </a>
+        <a href="#future-roadmap" class="px-6 py-3 border border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-colors">
+          Future Roadmap <i class="fas fa-road ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision Statement Section -->
+  <section id="vision-statement" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <h2 class="text-3xl font-bold mb-6">Our Vision Statement</h2>
+          <div class="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-lg mb-8">
+            <p class="text-lg text-slate-700 italic">
+              "To transform India into a global leader in circular economy innovation, where waste is eliminated as a concept, resources circulate continuously, communities thrive in clean environments, and economic prosperity aligns with ecological balance."
+            </p>
+          </div>
+          <p class="text-slate-600 mb-6">
+            At EcoYugam, we envision a future where India's growth story becomes synonymous with sustainability—a nation that demonstrates how economic development and environmental stewardship can coexist and reinforce each other.
+          </p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mr-4">
+              <i class="fas fa-quote-left text-emerald-600"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-800">Ananya Iyer</p>
+              <p class="text-sm text-slate-500">Founder & Vision Lead, EcoYugam</p>
+            </div>
+          </div>
+        </div>
+        
+        <div data-aos="fade-left" data-aos-delay="200">
+          <div class="bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-2xl p-1">
+            <div class="bg-white rounded-2xl p-6">
+              <h3 class="text-xl font-bold text-slate-800 mb-4">Core Elements of Our Vision</h3>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0">
+                    <i class="fas fa-recycle text-emerald-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-800">Zero-Waste India</h4>
+                    <p class="text-slate-600 text-sm mt-1">A nation where 95% of materials are recovered and reintegrated into productive use.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 flex-shrink-0">
+                    <i class="fas fa-users text-blue-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-800">Inclusive Green Economy</h4>
+                    <p class="text-slate-600 text-sm mt-1">Creating 5 million green jobs and sustainable livelihoods by 2040.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center mr-4 flex-shrink-0">
+                    <i class="fas fa-leaf text-amber-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-800">Regenerated Ecosystems</h4>
+                    <p class="text-slate-600 text-sm mt-1">Restoring 1 million hectares of degraded land and 500 water bodies across India.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-4 flex-shrink-0">
+                    <i class="fas fa-brain text-purple-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-800">Circular Innovation Hub</h4>
+                    <p class="text-slate-600 text-sm mt-1">Making India a global center for circular economy research, technology, and implementation.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision in Action Section -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Vision in Action</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">Our vision translates into tangible initiatives that are already creating pathways to the future we imagine.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="vision-card bg-white rounded-xl p-6 pill-shadow" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
+            <i class="fas fa-city text-emerald-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-emerald-700 mb-3">Smart Circular Cities</h3>
+          <p class="text-slate-600 mb-4">Developing 100 smart cities where waste becomes resource inputs, energy is renewable, and mobility is sustainable.</p>
+          <div class="flex items-center text-sm text-slate-500">
+            <i class="fas fa-check-circle text-emerald-500 mr-2"></i>
+            <span>5 pilot cities already implementing</span>
+          </div>
+        </div>
+        
+        <div class="vision-card bg-white rounded-xl p-6 pill-shadow" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+            <i class="fas fa-seedling text-blue-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-blue-700 mb-3">Rural Regeneration</h3>
+          <p class="text-slate-600 mb-4">Transforming 50,000 villages into self-sustainable communities with closed-loop agricultural and waste systems.</p>
+          <div class="flex items-center text-sm text-slate-500">
+            <i class="fas fa-check-circle text-emerald-500 mr-2"></i>
+            <span>1,200 villages currently engaged</span>
+          </div>
+        </div>
+        
+        <div class="vision-card bg-white rounded-xl p-6 pill-shadow" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mb-4">
+            <i class="fas fa-graduation-cap text-amber-600 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-amber-700 mb-3">Next-Generation Education</h3>
+          <p class="text-slate-600 mb-4">Integrating circular economy principles into the curriculum of 10,000 schools and 500 higher education institutions.</p>
+          <div class="flex items-center text-sm text-slate-500">
+            <i class="fas fa-check-circle text-emerald-500 mr-2"></i>
+            <span>85 schools with implemented curriculum</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parallax Section -->
+  <section class="py-20 text-white parallax" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=2000&q=80')">
+    <div class="bg-black/50 py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6" data-aos="fade-up">A Future Within Reach</h2>
+        <p class="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+          The India we envision is not a distant dream but an achievable future. With technology, collaboration, and determined action, we can transform our nation within a generation.
+        </p>
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 inline-block" data-aos="zoom-in">
+          <p class="text-2xl font-bold">"The best time to plant a tree was 20 years ago. The second best time is now."</p>
+          <p class="text-emerald-200 mt-2">- Indian Proverb</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Future Roadmap Section -->
+  <section id="future-roadmap" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Our Future Roadmap</h2>
+        <p class="text-slate-600 max-w-3xl mx-auto">A strategic pathway to realizing our vision for India's sustainable transformation.</p>
+      </div>
+
+      <div class="timeline max-w-3xl mx-auto" data-aos="fade-up">
+        <div class="timeline-item">
+          <div class="bg-white p-6 rounded-xl shadow-sm border">
+            <div class="text-sm text-emerald-600 font-semibold">2023-2025</div>
+            <h3 class="text-xl font-bold text-slate-800 mt-1 mb-3">Foundation & Scaling</h3>
+            <ul class="text-slate-600 space-y-2">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-emerald-500 mt-1 mr-2"></i>
+                <span>Expand operations to all 28 states</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-emerald-500 mt-1 mr-2"></i>
+                <span>Establish circular economy hubs in 50 cities</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-emerald-500 mt-1 mr-2"></i>
+                <span>Divert 25,000 tons of waste annually from landfills</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="bg-white p-6 rounded-xl shadow-sm border">
+            <div class="text-sm text-emerald-600 font-semibold">2026-2030</div>
+            <h3 class="text-xl font-bold text-slate-800 mt-1 mb-3">Transformation & Integration</h3>
+            <ul class="text-slate-600 space-y-2">
+              <li class="flex items-start">
+                <i class="fas fa-bullseye text-amber-500 mt-1 mr-2"></i>
+                <span>Implement circular models in 100 smart cities</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-bullseye text-amber-500 mt-1 mr-2"></i>
+                <span>Create 500,000 green jobs across value chains</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-bullseye text-amber-500 mt-1 mr-2"></i>
+                <span>Establish India as a global circular economy knowledge hub</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="bg-white p-6 rounded-xl shadow-sm border">
+            <div class="text-sm text-emerald-600 font-semibold">2031-2040</div>
+            <h3 class="text-xl font-bold text-slate-800 mt-1 mb-3">Vision Realization</h3>
+            <ul class="text-slate-600 space-y-2">
+              <li class="flex items-start">
+                <i class="fas fa-flag text-purple-500 mt-1 mr-2"></i>
+                <span>Achieve 90%+ material recovery rate nationwide</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-flag text-purple-500 mt-1 mr-2"></i>
+                <span>Create 5 million green livelihoods</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-flag text-purple-500 mt-1 mr-2"></i>
+                <span>Position India as global leader in circular innovation</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Future India Section -->
+  <section class="py-16 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">The India We Envision</h2>
+        <p class="text-emerald-100 max-w-3xl mx-auto">A glimpse into the sustainable future we're building together.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="future-card p-6 rounded-xl text-center pulse-animation" data-aos="zoom-in" data-aos-delay="0">
+          <div class="text-4xl mb-4">🌱</div>
+          <h3 class="text-xl font-bold mb-2">Zero Waste Nation</h3>
+          <p class="text-emerald-100">Where 95% of materials are recovered and reintegrated into productive use</p>
+        </div>
+        
+        <div class="future-card p-6 rounded-xl text-center pulse-animation" data-aos="zoom-in" data-aos-delay="100">
+          <div class="text-4xl mb-4">💧</div>
+          <h3 class="text-xl font-bold mb-2">Water Positive</h3>
+          <p class="text-emerald-100">Where water bodies are clean, rejuvenated, and managed sustainably</p>
+        </div>
+        
+        <div class="future-card p-6 rounded-xl text-center pulse-animation" data-aos="zoom-in" data-aos-delay="200">
+          <div class="text-4xl mb-4">🏙️</div>
+          <h3 class="text-xl font-bold mb-2">Green Cities</h3>
+          <p class="text-emerald-100">Where urban spaces integrate nature, renewable energy, and circular systems</p>
+        </div>
+        
+        <div class="future-card p-6 rounded-xl text-center pulse-animation" data-aos="zoom-in" data-aos-delay="300">
+          <div class="text-4xl mb-4">🤝</div>
+          <h3 class="text-xl font-bold mb-2">Inclusive Prosperity</h3>
+          <p class="text-emerald-100">Where green livelihoods uplift communities and reduce inequality</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-gradient-to-r from-emerald-50 to-cyan-50 rounded-2xl p-8" data-aos="zoom-in">
+        <h2 class="text-3xl font-bold text-slate-800 mb-4">Join Our Vision</h2>
+        <p class="text-slate-600 text-lg mb-8 max-w-2xl mx-auto">
+          The future we envision requires all of us. Whether you're an individual, organization, or community, there's a place for you in India's green transformation.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="contact.html" class="px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors glow">
+            Partner With Us <i class="fas fa-handshake ml-2"></i>
+          </a>
+          <a href="programs.html" class="px-6 py-3 border border-emerald-600 text-emerald-600 rounded-lg font-semibold hover:bg-emerald-50 transition-colors">
+            Explore Programs <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t py-12 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="rounded-full w-10 h-10 flex items-center justify-center bg-emerald-600 text-white font-bold">EY</div>
+            <div>
+              <a href="index.html" class="font-bold text-lg text-emerald-600">EcoYugam</a>
+              <p class="text-xs text-slate-500">Our Vision for India</p>
+            </div>
+          </div>
+          <p class="text-sm text-slate-600 mb-4">Envisioning and building a sustainable India through circular economy innovation and community action.</p>
+          <div class="flex gap-3">
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-twitter text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-colors">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Home</a></li>
+            <li><a href="about.html" class="text-slate-600 hover:text-emerald-600 transition-colors">About Us</a></li>
+            <li><a href="programs.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Programs</a></li>
+            <li><a href="impact.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Impact</a></li>
+            <li><a href="vision.html" class="text-slate-600 hover:text-emerald-600 transition-colors">Vision</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">Our Vision</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Zero-Waste India</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Circular Cities</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Green Economy</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Ecosystem Restoration</a></li>
+            <li><a href="#" class="text-slate-600 hover:text-emerald-600 transition-colors">Future Roadmap</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-slate-800 mb-4">Contact Us</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">123 Green Avenue, Eco Park, New Delhi, India 110001</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">+91 11 2345 6789</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope text-emerald-600 mt-1 mr-3"></i>
+              <span class="text-slate-600">contact@ecoyugam.org</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div>
+          <p class="text-sm text-slate-600">© <span id="year"></span> EcoYugam. All rights reserved.</p>
+        </div>
+        <div class="text-sm text-slate-600 mt-2 md:mt-0">Building India's sustainable future, today</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-emerald-600 text-white shadow-lg hover:bg-emerald-700 transition-colors opacity-0 invisible transition-all duration-300 z-40">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+  </script>
+</body>
+</html>
